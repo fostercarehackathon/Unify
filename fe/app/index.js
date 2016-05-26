@@ -11,6 +11,8 @@ import { render } from 'react-dom';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
+import { ReduxAsyncConnect, asyncConnect, reducer as reduxAsyncConnect } from 'redux-async-connect'
+
 // import Icons from 'components/partials/Icons';
 import routes from './routes';
 import configureStore from './store';
@@ -19,10 +21,19 @@ const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
 const rootEl = document.getElementById('app');
+
+const component = (
+  <Router render={(props) =>
+        <ReduxAsyncConnect {...props}/>
+      } history={history}>
+    {routes(store)}
+  </Router>
+);
+
 const root = (
   <div>
-    <Provider store={store}>
-      <Router history={history} routes={routes} />
+    <Provider store={store} key="provider">
+      {component}
     </Provider>
   </div>
 );

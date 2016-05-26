@@ -21,7 +21,10 @@ module.exports = {
     }),
     common.createDefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
-      API_URL: common.API_URL,
+      'CONFIG': JSON.stringify(
+        {
+          API_URL: common.API_URL
+        })
     })
   ],
   resolve: common.resolve,
