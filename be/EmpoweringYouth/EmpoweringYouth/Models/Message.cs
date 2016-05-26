@@ -8,13 +8,14 @@ namespace EmpoweringYouth.Models
     public class Message
     {
 
-        private long Id { get; set; }
+        public long? Id { get; set; }
 
-        private string Body { get; set; }
+        public string Body { get; set; }
 
-        private Status Status { get; set; }
+        public Status Status { get; set; }
 
-        private DateTime Date { get; set; }
+        public DateTime Date { get; set; }
 
+        public virtual Conversation Conversation { get; set; }
     }
 }

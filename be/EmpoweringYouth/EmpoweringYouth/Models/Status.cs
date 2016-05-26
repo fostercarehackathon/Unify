@@ -5,7 +5,7 @@ using System.Web;
 
 namespace EmpoweringYouth.Models
 {
-    enum Status
+    public enum Status
     {
         READ,
         UNREAD,
