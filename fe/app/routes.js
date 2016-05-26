@@ -11,13 +11,14 @@ import {
   AccountContainer
 } from 'containers';
 
+import AccountLayout from 'layouts/account-layout';
 
 export default () => {
   return (
     <Route>
       <Route path="/" component={AppContainer} onEnter={requireLogin}/>
       <Route path="messages" component={MessagesContainer}/>
-      <Route component={AccountContainer}>
+      <Route component={AccountLayout}>
         <Route path="/login" component={LoginContainer} />
         <Route path="/register" component={RegisterContainer} />
       </Route>

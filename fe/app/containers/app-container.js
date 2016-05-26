@@ -14,8 +14,6 @@ export default class AppContainer extends Component {
     return (
       <div>
         <Icons />
-
-        APP CONTAINER XXX
         { this.props.children }
       </div>
     );

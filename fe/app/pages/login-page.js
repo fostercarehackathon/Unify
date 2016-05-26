@@ -2,6 +2,8 @@ import React, {Component, PropTypes} from 'react';
 
 import {Link} from 'react-router';
 import {reduxForm} from 'redux-form';
+
+import InputField from 'components/inputfield';
 import {login as loginValidation} from './validations';
 import { handleLoginSuccess } from 'utils/auth';
 
@@ -50,11 +52,11 @@ class LoginPage extends Component {
         </div>
         {error && <div className="AccountLayout-formError">{error}</div>}
         <form onSubmit={handleSubmit(this.onLoginSubmit)}>
-          <input
+          <InputField
             {...email}
             type="email"
           />
-          <input
+          <InputField
             {...password}
             type="password"
           />

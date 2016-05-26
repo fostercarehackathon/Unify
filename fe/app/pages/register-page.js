@@ -4,8 +4,10 @@ import { browserHistory, Link } from 'react-router';
 import { reduxForm } from 'redux-form';
 
 import { requestAccount as requestAccountValidation } from './validations';
+import InputField from 'components/inputfield';
+import { Grid, GridCell } from 'components/grid';
 
-const fields = ['firstName', 'lastName', 'email', 'phone', 'company'];
+const fields = ['firstName', 'lastName', 'email', 'phone', 'type'];
 
 @reduxForm({
   form: 'requestAccount',
@@ -47,7 +49,7 @@ class RegisterPage extends Component {
       lastName,
       email,
       phone,
-      company
+      type
     }, error
     } = this.props;
 
@@ -56,7 +58,7 @@ class RegisterPage extends Component {
         <h1><Link to="/login"/>Request Account</h1>
         {error && <div className="AccountLayout-formError">{error}</div>}
         <form onSubmit={handleSubmit(this.onRequestAccountSubmit)}>
-          <input
+          <InputField
             {...firstName}
           />
 
@@ -74,10 +76,13 @@ class RegisterPage extends Component {
           />
 
           <input
-            {...company}
+            {...type}
           />
-
-          <button type="submit">Submit</button>
+          <Grid align="right" className="AccountLayout-formActions">
+            <GridCell fit>
+              <button type="submit">Submit</button>
+            </GridCell>
+          </Grid>
         </form>
       </div>
     );

@@ -1,4 +1,4 @@
-@import '~scss/utils/strip-unit';
+@import '../../utils/strip-unit';
 
 @mixin font-size($size: 1px) {
   $unitlessSize: strip-unit($size);
