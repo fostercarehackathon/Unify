@@ -1,0 +1,72 @@
+$oheaderHeight: 80px;
+
+$oheaderBorderRadius: 4px;
+
+$oheaderBackground: $pColorPrimary4;
+
+$oheaderTextColor: $pColorTextLight;
+$oheaderTextSize: $fDefault;
+$oheaderTextLineHeight: $lDefault;
+
+
+.OverlayHeader {
+  position: relative;
+
+  padding: 20px;
+  max-height: $oheaderHeight;
+
+  background: $oheaderBackground;
+  border-radius: $oheaderBorderRadius $oheaderBorderRadius 0 0;
+
+  color: $oheaderTextColor;
+  @include font-line-size($oheaderTextSize, $oheaderTextLineHeight);
+
+  &.__withIcon {
+    padding-left: 61px;
+  }
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  transform: translateY(-50%);
+  z-index: 2;
+
+  fill: $oheaderTextColor;
+
+  vertical-align: top;
+}
+
+.content {
+  display: inline-block;
+
+  padding-right: 40px;
+
+  vertical-align: top;
+}
+
+.closeButton {
+  position: absolute;
+  top: 50%;
+  right: 12.5px;
+  transform: translateY(-50%);
+  z-index: 3;
+
+  display: block;
+
+  padding: 7.5px; // equivalent of 30px;
+
+  box-sizing: content-box;
+
+  cursor: pointer;
+
+  svg {
+    width: 15px;
+    height: 15px;
+
+    fill: $oheaderTextColor;
+
+    cursor: pointer;
+  }
+}
