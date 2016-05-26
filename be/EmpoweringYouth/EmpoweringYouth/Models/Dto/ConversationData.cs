@@ -19,7 +19,7 @@ namespace EmpoweringYouth.Models.Dto
 
         public DateTime StartedDate { get; set; }
 
-        public virtual List<Message> messages { get; set; }
+        public virtual ICollection<Message> messages { get; set; }
 
         public List<String>[] Tags { get; set; }
     }
