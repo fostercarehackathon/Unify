@@ -6,6 +6,9 @@ import cx from 'classnames';
 // components
 import Modal from 'react-modal';
 
+// styles
+import 'overlay.scss';
+
 class Overlay extends React.Component {
   static propTypes = {
     isOpen: PropTypes.bool,
@@ -20,6 +23,7 @@ class Overlay extends React.Component {
     };
   }
 
+  @autobind
   checkModalSize() {
     const windowHeight = window.innerHeight;
     const contentHeight = this.refs.ModalChildren.offsetHeight;
@@ -34,7 +38,6 @@ class Overlay extends React.Component {
   render() {
     const { children, isOpen } = this.props;
     const { isOutOfBound } = this.state;
-    const containsFooter = children[2];
 
     return (
       <Modal
@@ -42,7 +45,6 @@ class Overlay extends React.Component {
         className={
           cx({
             'OverlayContainer': true,
-            'OverlayContainer--withFooter': containsFooter,
             'OverlayContainer--outOfBound': isOutOfBound
           })
         }
