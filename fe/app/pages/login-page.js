@@ -7,7 +7,8 @@ import InputField from 'components/inputfield';
 import {login as loginValidation} from './validations';
 import { handleLoginSuccess } from 'utils/auth';
 
-import './login-page';
+import './login-page.scss';
+
 const fields = ['email', 'password'];
 
 @reduxForm({

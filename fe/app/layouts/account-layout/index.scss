@@ -1,7 +1,6 @@
 @import '~styles/settings/colors';
 
-$background: $color-downy;
-$header-background: $color-downy;
+$background: $color-mercury;
 $back-icon-color: $color-gray;
 
 .AccountLayout {
@@ -31,7 +30,7 @@ $back-icon-color: $color-gray;
   height: 40px;
   margin-top: 40px;
   margin-left: 200px;
-  margin-bottom: 140px;
+  margin-bottom: 160px;
 
   img {
     max-width: 100%;
