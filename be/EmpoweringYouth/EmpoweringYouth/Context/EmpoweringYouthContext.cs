@@ -15,14 +15,9 @@ namespace EmpoweringYouth.Context
             Database.SetInitializer<EmpoweringYouthContext>(new EmpoweringYouthContextInitializer());
         }
 
-<<<<<<< HEAD
         public DbSet<User> users { get; set; }
-=======
-        public DbSet<User> users;
-
         public DbSet<Conversation> conversations;
 
         public DbSet<Message> messages;
->>>>>>> 49a92b66a834d52762d3441531b3072b83247fa1
     }
 }
