@@ -12,24 +12,9 @@ namespace EmpoweringYouth.Controllers
     public class MessagesController : ApiController
     {
 
-        [HttpGet]
-        [Route("health")]
-        public IHttpActionResult Health()
-        {
-            IDictionary<String, String> status = new Dictionary<String, String>();
-            status.Add("running","up");
-            return Ok(status);
-        }
-
         [HttpPost]
         public IHttpActionResult AddNewMessage(Message message)
         {
-            if (message.Id != null)
-            {
-                // create new message and add it to conversation
-
-            }
-
             return Ok(message);
         }
     }
