@@ -7,14 +7,14 @@ using System.Web;
 
 namespace EmpoweringYouth.Context
 {
-    public class EmpoweringYouthContext: DbContext
+    public class EmpoweringYouthContext : DbContext
     {
 
-        public EmpoweringYouthContext(): base()
+        public EmpoweringYouthContext() : base()
         {
-
+            Database.SetInitializer<EmpoweringYouthContext>(new EmpoweringYouthContextInitializer());
         }
 
-        public DbSet<User> users;
+        public DbSet<User> users { get; set; }
     }
 }
