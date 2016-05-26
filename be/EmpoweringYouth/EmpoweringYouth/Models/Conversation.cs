@@ -15,6 +15,8 @@ namespace EmpoweringYouth.Models
 
         private long ReplyIn { get; set; }
 
+        private DateTime Date { get; set; }
+
         private List<String>[] Tags { get; set; }
     }
 }

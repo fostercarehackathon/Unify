@@ -14,5 +14,7 @@ namespace EmpoweringYouth.Models
 
         private Status Status { get; set; }
 
+        private DateTime Date { get; set; }
+
     }
 }
