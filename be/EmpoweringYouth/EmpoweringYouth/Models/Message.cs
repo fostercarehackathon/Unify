@@ -16,6 +16,6 @@ namespace EmpoweringYouth.Models
 
         public DateTime Date { get; set; }
 
-        public virtual Conversation Conversation { get; set; }
+        public Conversation Conversation { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace EmpoweringYouth.Models
 
         public DateTime Date { get; set; }
 
-        public virtual List<Message> messages { get; set; }
+        public List<Message> messages { get; set; }
 
         public List<String>[] Tags { get; set; }
     }
