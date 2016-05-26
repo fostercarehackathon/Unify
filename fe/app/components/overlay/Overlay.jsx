@@ -7,12 +7,13 @@ import cx from 'classnames';
 import Modal from 'react-modal';
 
 // styles
-import 'overlay.scss';
+import './overlay.scss';
 
 class Overlay extends React.Component {
   static propTypes = {
-    isOpen: PropTypes.bool,
-    children: PropTypes.node
+    className: PropTypes.string,
+    children: PropTypes.node,
+    isOpen: PropTypes.bool
   };
 
   constructor(...params) {
@@ -36,7 +37,7 @@ class Overlay extends React.Component {
   }
 
   render() {
-    const { children, isOpen } = this.props;
+    const { className, children, isOpen } = this.props;
     const { isOutOfBound } = this.state;
 
     return (
@@ -48,7 +49,11 @@ class Overlay extends React.Component {
             'OverlayContainer--outOfBound': isOutOfBound
           })
         }
-        overlayClassName="Overlay"
+        overlayClassName={
+          cx({
+            Overlay: true
+          }, className)
+        }
         onAfterOpen={this.checkModalSize}
       >
         <div
