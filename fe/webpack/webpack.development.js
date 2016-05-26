@@ -1,6 +1,5 @@
 const common = require('./common');
 
-const API_URL = 'http://localhost';
 
 module.exports = {
   entry: common.entry,
@@ -22,7 +21,7 @@ module.exports = {
     }),
     common.createDefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
-      API_URL
+      API_URL: common.API_URL,
     })
   ],
   resolve: common.resolve,

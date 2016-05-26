@@ -29,12 +29,7 @@ module.exports = {
     common.createExtractCSSPlugin('[name].bundle-[hash].css'),
     common.createDefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
-      'CONFIG': JSON.stringify(
-        _.pick(process.env,
-         'API_URL',
-         'AUTHORIZATION_SCHEME',
-         'TOKEN_HEADER'
-       ))
+      API_URL: common.API_URL,
     }),
     common.createAssetsPlugin()
   ],

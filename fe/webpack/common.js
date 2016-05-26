@@ -201,3 +201,5 @@ exports.devServer = {
 exports.postcss = [
   require('autoprefixer')({ browsers: ['last 2 versions'] })
 ];
+
+exports.API_URL = 'http://localhost';
