@@ -1,0 +1,9 @@
+@import '~styles/settings/colors.scss';
+
+.ConversationDetails {
+  position: relative;
+
+  .OverlayContentChildren {
+    background: $color-white;
+  }
+}
