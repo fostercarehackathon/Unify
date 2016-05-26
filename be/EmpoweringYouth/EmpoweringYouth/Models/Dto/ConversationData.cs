@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace EmpoweringYouth.Models
+namespace EmpoweringYouth.Models.Dto
 {
-    public class Conversation
+    public class ConversationData
     {
-        public long Id { get; set; }
-
         public User From { get; set; }
 
         public User To { get; set; }

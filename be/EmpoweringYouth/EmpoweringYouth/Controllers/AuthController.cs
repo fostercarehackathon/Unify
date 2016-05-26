@@ -1,5 +1,6 @@
 ﻿using EmpoweringYouth.Context;
 using EmpoweringYouth.Models;
+using EmpoweringYouth.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,9 +18,7 @@ namespace EmpoweringYouth.Controllers
     public class AuthController : ApiController
     {
 
-        byte[] securityKey = System.Text.Encoding.UTF8.GetBytes("changeMeWhenInProduction!");
 
-        JwtSecurityTokenHandler tokenHandler = new System.IdentityModel.Tokens.JwtSecurityTokenHandler();
 
         [HttpPost]
         [Route("signin")]
@@ -33,14 +32,16 @@ namespace EmpoweringYouth.Controllers
 
             using (var ctx = new EmpoweringYouthContext())
             {
-                var passwordHash = GeneratePasswordHash(loginData.password);
+                var passwordHash = AuthService.GeneratePasswordHash(loginData.password);
                 var users = ctx.users.Where(u => u.Username == loginData.username && u.Password == passwordHash);
                 User user = users.Count() == 1 ? users.First() : null;
                 if (user == null)
                 {
                     return NotFound();
                 }
-                var token = GenerateToken(user);
+                var token = AuthService.GenerateToken(user);
+                AuthService.userCache.Add(token, user);
+
                 var response = new Dictionary<String, String>();
                 response.Add("token", token);
                 return Ok(response);
@@ -55,36 +56,34 @@ namespace EmpoweringYouth.Controllers
             using (var ctx = new EmpoweringYouthContext())
             {
                 user.Role = Role.CW;
-                user.Password = GeneratePasswordHash(user.Password);
+                user.Password = AuthService.GeneratePasswordHash(user.Password);
                 ctx.users.Add(user);
                 ctx.SaveChanges();
                 return Ok();
             }
         }
 
-        public static String GeneratePasswordHash(String password)
+        [HttpGet]
+        [Route("session")]
+        public IHttpActionResult GetSession(String token)
         {
-            var sha1 = new SHA1CryptoServiceProvider();
-            var sha1data = sha1.ComputeHash(System.Text.Encoding.UTF8.GetBytes((password)));
-            return System.Text.Encoding.Default.GetString(sha1data);
-        }
+            IEnumerable<string> requestHeaders;
+            var authHeader = string.Empty;
 
-        private String GenerateToken(User user)
-        {
-            var now = DateTime.Now;
-            var tokenDescriptor = new SecurityTokenDescriptor
+            if (Request.Headers.TryGetValues("Authorization", out requestHeaders))
             {
-                Subject = new ClaimsIdentity(new Claim[]
+                authHeader = requestHeaders.FirstOrDefault();
+                User user = AuthService.GetFromCache(authHeader);
+                if (user == null)
                 {
-                    new Claim(ClaimTypes.Name,user.Firstname+" "+user.Lastname),
-                    new Claim(ClaimTypes.Role,user.Role.ToString()),
-                }),
-                TokenIssuerName = "CaseWorkerMessaging"
-            };
-
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+                    return NotFound();
+                }
+                return Ok(user);
+            }
+            return NotFound();
         }
+
+
     }
 }
 

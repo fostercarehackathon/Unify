@@ -5,9 +5,9 @@ using System.Web;
 
 namespace EmpoweringYouth.Models
 {
-    public enum Status
+    public enum ReplyType
     {
-        READ,
-        UNREAD
-    };
+        INSTANT,
+        DELAYED
+    }
 }

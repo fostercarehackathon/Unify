@@ -8,7 +8,7 @@ namespace EmpoweringYouth.Models
     public class Message
     {
 
-        public long? Id { get; set; }
+        public long Id { get; set; }
 
         public string Body { get; set; }
 
