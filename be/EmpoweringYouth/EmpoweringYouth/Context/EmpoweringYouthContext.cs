@@ -16,5 +16,9 @@ namespace EmpoweringYouth.Context
         }
 
         public DbSet<User> users;
+
+        public DbSet<Conversation> conversations;
+
+        public DbSet<Message> messages;
     }
 }
