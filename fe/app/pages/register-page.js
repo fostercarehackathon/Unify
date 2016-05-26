@@ -59,23 +59,28 @@ class RegisterPage extends Component {
         {error && <div className="AccountLayout-formError">{error}</div>}
         <form onSubmit={handleSubmit(this.onRequestAccountSubmit)}>
           <InputField
+            label="First name: "
             {...firstName}
           />
 
-          <input
+          <InputField
+            label="Last name: "
             {...lastName}
           />
 
-          <input
+          <InputField
+            label="Email: "
             {...email}
             type="email"
           />
 
-          <input
+          <InputField
+            label="Phone: "
             {...phone}
           />
 
-          <input
+          <InputField
+            label="Type: "
             {...type}
           />
           <Grid align="right" className="AccountLayout-formActions">
