@@ -1,19 +1,20 @@
 import { request } from 'requests';
 
-const apiUrl = CONFIG.API_URL;
+const apiUrl = CONFIG.API_URL + '/api/auth';
 
 export function login(email, password) {
-  return request.post(`${apiUrl}/session`, {
+  return request.post(`${apiUrl}/signin`, {
     email,
     password
   });
 }
 
 export function loadSession() {
-  return request.get(`${apiUrl}/session`);
+  return Promise.resolve({ok: true});
+  // return request.get(`${apiUrl}/session`);
 }
 
 export function registerAccount(data) {
   return Promise.resolve(data);
-  // return request.post(`${apiUrl}/account/request`, data);
+  // return request.post(`${apiUrl}/signup`, data);
 }

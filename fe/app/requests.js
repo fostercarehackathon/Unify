@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 import { store } from 'store';
-import * as requestActions from 'reducers/request';
+import * as requestActions from 'actions/request';
 import { logout } from 'utils/auth';
 
 export const request = axios.create({
-  baseURL: '/api/call',
+  baseURL: '/api/health',
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json'

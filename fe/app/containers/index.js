@@ -1,3 +1,4 @@
 export AppContainer from './app-container';
 export MessagesContainer from './messages-container';
 export LoginContainer from './login-container';
+export RegisterContainer from './register-container';

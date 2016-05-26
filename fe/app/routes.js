@@ -19,7 +19,7 @@ export default () => {
       <Route path="messages" component={MessagesContainer}/>
       <Route component={AccountContainer}>
         <Route path="/login" component={LoginContainer} />
-        <Route path="/request-account" component={RegisterContainer} />
+        <Route path="/register" component={RegisterContainer} />
       </Route>
     </Route>
   );
