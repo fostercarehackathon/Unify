@@ -3,9 +3,7 @@ require('es6-promise').polyfill();
 require('whatwg-fetch');
 
 // load base styles
-// import 'styles/base/all.scss';
-// import 'styles/utils/all.scss';
-// import { colors, fontFamily } from 'styles/variables';
+import 'styles/main.scss';
 
 // deps
 import React from 'react';
