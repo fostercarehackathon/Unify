@@ -12,7 +12,7 @@
     "build": "npm run clean && NODE_ENV=production webpack && gulp assets:replace",
     "clean": "rm -rf ./dist",
     "lint": "eslint app/**/*.js",
-    "icons": "svg-sprite -s  --svg-xmldecl false --svg-doctype false --shape-id-generator symbol-%s --si --ss sprite.html --symbol-dest app/icons app/icons/*.svg",
+    "icons": "svg-sprite -s  --svg-xmldecl false --svg-doctype false --shape-id-generator icon-%s --si --ss sprite.html --symbol-dest app/icons app/icons/*.svg",
     "storybook": "start-storybook -p 9001"
   },
   "author": "",
