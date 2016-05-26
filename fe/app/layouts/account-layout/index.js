@@ -20,7 +20,9 @@ export default class AccountLayout extends Component {
           <Container>
             <Grid align="center">
               <GridCell col={6}>
-                <div className="AccountLayout-logo"></div>
+                <div className="AccountLayout-logo">
+                  <img src={require('images/unify_logo.png')} />
+                </div>
                   {this.props.children}
                 <footer className="AccountLayout-footer">
                   <Link to="/troubleshoot">Do you have trouble using the platform?</Link>

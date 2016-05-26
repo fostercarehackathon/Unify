@@ -29,8 +29,13 @@ $back-icon-color: $color-gray;
 .AccountLayout-logo {
   width: 170px;
   height: 40px;
-  margin-top: 140px;
-  margin-bottom: 40px;
+  margin-top: 40px;
+  margin-left: 200px;
+  margin-bottom: 140px;
+
+  img {
+    max-width: 100%;
+  }
 }
 
 .AccountLayout-footer {

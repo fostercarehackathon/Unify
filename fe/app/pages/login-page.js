@@ -7,6 +7,7 @@ import InputField from 'components/inputfield';
 import {login as loginValidation} from './validations';
 import { handleLoginSuccess } from 'utils/auth';
 
+import './login-page';
 const fields = ['email', 'password'];
 
 @reduxForm({
@@ -53,10 +54,12 @@ class LoginPage extends Component {
         {error && <div className="AccountLayout-formError">{error}</div>}
         <form onSubmit={handleSubmit(this.onLoginSubmit)}>
           <InputField
+            label="Email: "
             {...email}
             type="email"
           />
           <InputField
+            label="Password: "
             {...password}
             type="password"
           />
