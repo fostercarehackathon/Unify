@@ -9,11 +9,12 @@ class HeaderContainer extends Component {
   };
 
   render() {
-    const requestStatus = 'success';
+    // const requestStatus = 'success';
 
     return (
       <div>
-        <RequestStatus status={requestStatus} />
+        <RequestStatus status="success" />
+        <RequestStatus status="error" />
         HEADER CONTAINER
       </div>
     );
