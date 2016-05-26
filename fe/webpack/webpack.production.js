@@ -1,6 +1,5 @@
 const common = require('./common');
 const _ = require('lodash');
-require('@kalon/k1-config');
 
 module.exports = {
   entry: common.entry,
