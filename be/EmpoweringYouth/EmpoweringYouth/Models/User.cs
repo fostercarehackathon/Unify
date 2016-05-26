@@ -16,6 +16,8 @@ namespace EmpoweringYouth.Models
 
         public String Lastname { get; set; }
 
+        public String Password { get; set; }
+
         public Role Role { get; set; }
     }
 }
