@@ -17,6 +17,9 @@ import { ReduxAsyncConnect, asyncConnect, reducer as reduxAsyncConnect } from 'r
 import routes from './routes';
 import configureStore from './store';
 
+// components
+import Icons from 'components/icons';
+
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
@@ -32,6 +35,7 @@ const component = (
 
 const root = (
   <div>
+    <Icons />
     <Provider store={store} key="provider">
       {component}
     </Provider>
