@@ -33,6 +33,7 @@ namespace EmpoweringYouth.Controllers
                 }
 
                 ConversationData c = new ConversationData();
+                c.Id = conversation.Id;
                 c.From = conversation.From;
                 c.To = conversation.To;
                 c.StartedDate = conversation.StartedDate;
