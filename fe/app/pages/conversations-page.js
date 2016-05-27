@@ -1,11 +1,14 @@
 // deps
 import React, { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
-import { push } from 'react-router-redux';
 import autobind from 'autobind-decorator';
 
 // components
+import { Grid, GridCell } from 'components/grid';
 import ConversationItem from 'components/conversation-item';
+
+// styles
+import './conversations-page.scss';
 
 class ConversationsPage extends Component {
   static propTypes = {
@@ -43,20 +46,23 @@ class ConversationsPage extends Component {
     const conversations = this.renderConversations(this.props.conversations);
 
     return (
-      <div className="ConversationsPage app-wrapper">
-        <div className="MessagesMenu">
-          <div className="MessagesMenu-TotalMessages">Your messages 26</div>
+      <Grid className="ConversationsPage app-wrapper">
+        <GridCell className="MessagesMenu" col={2}>
+          <div className="MessagesMenu-TotalMessages">
+            Your messages <span className="MessagesMenu-Counter">26</span>
+          </div>
           <ul>
-            <li>Unread 1</li>
-            <li>Read 24</li>
+            <li>All <span className="MessagesMenu-Counter">1</span></li>
+            <li>Unread <span className="MessagesMenu-Counter">1</span></li>
+            <li>Read <span className="MessagesMenu-Counter">24</span></li>
           </ul>
-        </div>
+        </GridCell>
 
-        <div className="Conversations">
+        <GridCell className="ConversationsList" fit>
           {conversations}
           {this.props.children}
-        </div>
-      </div>
+        </GridCell>
+      </Grid>
     );
   }
 }
