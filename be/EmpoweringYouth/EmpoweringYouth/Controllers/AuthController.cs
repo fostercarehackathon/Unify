@@ -11,15 +11,13 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace EmpoweringYouth.Controllers
 {
     [RoutePrefix("api/auth")]
     public class AuthController : ApiController
     {
-
-
-
         [HttpPost]
         [Route("signin")]
         public IHttpActionResult SignIn([Required]LoginData loginData)
@@ -34,11 +32,21 @@ namespace EmpoweringYouth.Controllers
             {
                 var passwordHash = AuthService.GeneratePasswordHash(loginData.password);
                 var users = ctx.users.Where(u => u.Username == loginData.username && u.Password == passwordHash);
-                User user = users.Count() == 1 ? users.First() : null;
+                User user = users.Count() > 0 ? users.First() : null;
                 if (user == null)
                 {
-                    return NotFound();
+                    return BadRequest();
                 }
+
+
+                foreach (KeyValuePair<String, User> entry in AuthService.userCache.ToList())
+                {
+                    if (entry.Value.Id.Equals(user.Id))
+                    {
+                        AuthService.userCache.Remove(entry.Key);
+                    }
+                }
+
                 var token = AuthService.GenerateToken(user);
                 AuthService.userCache.Add(token, user);
 
@@ -65,7 +73,7 @@ namespace EmpoweringYouth.Controllers
 
         [HttpGet]
         [Route("session")]
-        public IHttpActionResult GetSession()
+        public IHttpActionResult Session()
         {
             IEnumerable<string> requestHeaders;
             var authHeader = string.Empty;

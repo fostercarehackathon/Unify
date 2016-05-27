@@ -20,7 +20,6 @@ namespace EmpoweringYouth.Models
 
         public String Lastname { get; set; }
 
-        [JsonIgnore]
         public String Password { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
