@@ -17,7 +17,8 @@ export default function conversations(state = initialState, action) {
             lastMessageDate: conversation.lastMessageDate,
             startedDate: conversation.startedDate,
             messages: conversation.messages,
-            tags: conversation.tags
+            tags: conversation.tags,
+            status: conversation.status.toLowerCase()
           };
         })
       };
