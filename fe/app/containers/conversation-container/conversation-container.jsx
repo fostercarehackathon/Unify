@@ -20,7 +20,7 @@ import './conversation-container.scss';
 
 @connect(
   (store) => ({
-    conversation: store.conversation,
+    conversation: store.conversation
   }),
   (dispatch) => ({
     actions: bindActionCreators(ConversationActions, dispatch)
@@ -67,11 +67,11 @@ class ConversationContainer extends Component {
   }
 
   render() {
-    //const { id, lastMessageDate, subject } = this.props.conversation;
+    const { id, lastMessageDate, subject } = this.props.conversation;
 
-    const id = 1;
-    const lastMessageDate = Date.now();
-    const subject = 'Hello';
+    if (!id) {
+      return null;
+    }
 
     return (
       <Overlay className="ConversationContainer" isOpen>
