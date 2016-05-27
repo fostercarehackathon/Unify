@@ -4,11 +4,6 @@ import qs from 'qs';
 const apiUrl = CONFIG.API_URL + '/api';
 
 export function loadConversations(query) {
-  const conversationsQuery = qs.stringify(query = {
-    status: 'ALL',
-    start: 0,
-    end: 30
-  });
-
+  const conversationsQuery = qs.stringify(query);
   return request.get(`${apiUrl}/conversations?${conversationsQuery}`);
 }
