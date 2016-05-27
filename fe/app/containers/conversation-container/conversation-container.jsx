@@ -5,6 +5,7 @@ import { asyncConnect } from 'redux-async-connect';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autobind from 'autobind-decorator';
+import cx from 'classnames';
 
 import * as ConversationActions from 'actions/conversation';
 
@@ -13,7 +14,7 @@ import Icon from 'components/icon';
 import Overlay from 'components/overlay';
 
 // subcomponents
-// import ConversationMessage from 'components/conversation-message';
+import ConversationMessage from 'components/conversation-message';
 
 // styles
 import './conversation-container.scss';
