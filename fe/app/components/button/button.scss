@@ -41,9 +41,16 @@ $button-transparent: (
   &:hover {
     background: #f00; //map-get($button-defaults, 'hoverBackground');
   }
+
+  &--submit{
+    padding: 8px 72px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  &--transparent {
+    background: map-get($button-transparent, background);
+    color: map-get($button-transparent, color);
+  }
 }
 
-.Button--transparent {
-  background: map-get($button-transparent, background);
-  color: map-get($button-transparent, color);
-}

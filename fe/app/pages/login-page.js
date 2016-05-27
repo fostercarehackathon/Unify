@@ -4,6 +4,8 @@ import {Link} from 'react-router';
 import {reduxForm} from 'redux-form';
 
 import InputField from 'components/inputfield';
+import Button from 'components/button';
+
 import {login as loginValidation} from './validations';
 import { handleLoginSuccess } from 'utils/auth';
 
@@ -70,7 +72,7 @@ class LoginPage extends Component {
               >
                 Forgot password?
               </Link>
-              <button primary label="Login" type="submit">Submit</button>
+              <Button className="Button--submit" type="submit">Submit</Button>
               <Link
                 to="/register"
                 className="LoginPage-register"

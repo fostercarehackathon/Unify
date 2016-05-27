@@ -1,4 +1,20 @@
+@import '~styles/settings/colors';
+
 .LoginPage {
   background: white;
   padding: 20px;
+}
+
+.LoginPage-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.LoginPage-forgotPassword, .LoginPage-register {
+  color: $color-bali-hai;
+
+  &:hover {
+    color: $color-bali-hai;
+  }
 }
