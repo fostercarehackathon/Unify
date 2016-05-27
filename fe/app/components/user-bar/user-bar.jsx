@@ -19,6 +19,7 @@ export default class UserBar extends Component {
     return (
       <div className="UserBar">
         <div className="app-wrapper">
+          <div className="app-logo"></div>
           <div className="UserBar-Message">
             <Icon name="envelope" />
             <span>Hello, {username}</span>
