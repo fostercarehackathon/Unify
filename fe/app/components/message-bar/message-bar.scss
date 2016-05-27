@@ -1,19 +1,23 @@
-/*------------------------------------*\
-    MessageBar component
-\*------------------------------------*/
-
 @import '~styles/settings/colors';
+@import '~styles/tools/mixins/position';
 
 .MessageBar {
   width: 100%;
   height: 60px;
 
+
+  overflow: hidden;
   background: #fff;
 
+  transition: height 0.5s;
   text-align: center;
+
+  &--active {
+    text-align: left;
+    height: 410px;
+  }
 }
 
-// compose button
 .MessageBar-ComposeButton {
   color: #606060;
   font-size: 14px;
@@ -36,7 +40,40 @@
   }
 }
 
-// message composer
-.MessageBar-Composer {
+.MessageBar-Title {
 
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 26px;
+
+  .Icon {
+    width: 28px;
+    height: 28px;
+
+    margin-right: 30px;
+    fill: $color-morning-glory;
+  }
+}
+
+.MessageBar-Subject {
+  padding-top: 40px;
+}
+
+.MessageBar-Body {
+  padding-top: 40px;
+}
+
+.MessageBar-Footer {
+  padding-top: 40px;
+  .Button {
+    margin-right: 20px;
+  }
+}
+
+.MessageBar-ComposerBlock {
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-top: 40px;
+  max-height: 370px;
+  overflow-y:auto;
 }
