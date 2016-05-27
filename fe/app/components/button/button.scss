@@ -13,8 +13,12 @@ $button-defaults: (
 );
 
 $button-transparent: (
-  background: none,
   color: $color-tundora
+);
+
+$button-link: (
+  color: $color-bittersweet,
+  hoverColor: darken($color-bittersweet, 5%)
 );
 
 .Button {
@@ -39,18 +43,42 @@ $button-transparent: (
 
   // hover
   &:hover {
-    background: #f00; //map-get($button-defaults, 'hoverBackground');
-  }
-
-  &--submit{
-    padding: 8px 72px;
-    font-size: 16px;
-    font-weight: 400;
-  }
-
-  &--transparent {
-    background: map-get($button-transparent, background);
-    color: map-get($button-transparent, color);
+    background: map-get($button-defaults, 'hoverBackground');
   }
 }
 
+// transparent
+.Button--transparent {
+  background: none;
+  color: map-get($button-transparent, 'color');
+
+  &:hover {
+    background: none;
+    color: map-get($button-defaults, 'background');
+  }
+}
+
+// link (plain text, no background)
+.Button--link {
+  padding: 0;
+
+  font-size: 16px;
+
+  background: none;
+  color: map-get($button-link, 'color');
+
+  &:hover {
+    background: none;
+    color: map-get($button-link, 'hoverColor');
+
+    text-decoration: underline;
+  }
+}
+
+// submit (smaller?)
+.Button--submit {
+  padding: 8px 72px;
+
+  font-size: 16px;
+  font-weight: 400;
+}
