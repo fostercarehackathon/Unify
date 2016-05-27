@@ -64,6 +64,7 @@ class LoginPage extends Component {
             {...password}
             type="password"
           />
+
           <div className="AccountLayout-formActions">
             <div className="LoginPage-actions">
               <Link
@@ -72,7 +73,7 @@ class LoginPage extends Component {
               >
                 Forgot password?
               </Link>
-              <Button className="Button--submit" type="submit">Submit</Button>
+              <Button type="submit">Submit</Button>
               <Link
                 to="/register"
                 className="LoginPage-register"
