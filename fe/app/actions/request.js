@@ -4,6 +4,12 @@ export function load() {
   };
 }
 
+export function error() {
+  return {
+    type: 'REQUEST_ERROR'
+  };
+}
+
 export function finishLoading() {
   return {
     type: 'REQUEST_FINISH_LOADING'

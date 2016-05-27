@@ -7,6 +7,7 @@ import autobind from 'autobind-decorator';
 import Button from 'components/button';
 import Icon from 'components/icon';
 import InputField from 'components/inputfield';
+import Select from 'react-select';
 import ReactQuill from 'react-quill';
 // style
 import './message-bar.scss';
@@ -19,6 +20,7 @@ export default class MessageBar extends Component {
       composing: false,
       subject: '',
       body: '',
+      to:'0',
     }
   }
 
@@ -34,7 +36,11 @@ export default class MessageBar extends Component {
     this.props.actions.saveMessage({
       subject: this.state.subject,
       body: this.state.body,
-      to: 'ionut.radu@kalon.ro'
+      to: this.state.to,
+    }).then(()=> {
+      this.props.onSuccess();
+    }).catch(()=>{
+      this.props.onError();
     })
   }
 
@@ -52,8 +58,24 @@ export default class MessageBar extends Component {
     });
   }
 
+  @autobind
+  onUserChanged(user) {
+    this.setState({
+      to: user.value,
+    });
+  }
+
   renderComposerBody() {
     if (this.state.composing) {
+      const userOptions = this.props.users.map((user, index) => {
+        return {
+          value: user.username,
+          label: user.username,
+        }
+      });
+
+      console.log('userOptions', this.state.to)
+      console.log('userOptionsuserOptions', userOptions)
       return (
         <div className="MessageBar-ComposerBlock">
           <div
@@ -64,6 +86,12 @@ export default class MessageBar extends Component {
             <span>Compose message...</span>
           </div>
           <InputField onChange={this.onSubjectChanged} className="MessageBar-Subject" label="Subject"/>
+          <Select
+            value={this.state.to}
+            onBlur={null}
+            onChange={this.onUserChanged}
+            options={userOptions}
+          />
           <ReactQuill onChange={this.onBodyChanged} theme='snow' className="MessageBar-Body"/>
           <div className="MessageBar-Footer">
             <Button onClick={this.sendMessage}>Send</Button>

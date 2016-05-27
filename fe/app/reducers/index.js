@@ -5,6 +5,7 @@ import {reducer as reduxAsyncConnect} from 'redux-async-connect';
 
 import request from './request';
 import auth from './auth';
+import users from './users';
 import conversation from './conversation';
 import conversations from './conversations';
 
@@ -12,6 +13,7 @@ export default combineReducers({
   routing,
   form: formReducer,
   request,
+  users,
   reduxAsyncConnect,
   auth,
   conversation,

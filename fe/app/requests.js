@@ -44,6 +44,7 @@ request.interceptors.response.use(
     }
 
     store.dispatch(requestActions.finishLoading());
+    store.dispatch(requestActions.error());
 
     return Promise.reject(err);
   }

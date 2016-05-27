@@ -1,6 +1,7 @@
 const initialState = {
   loadingInstances: 0,
-  isLoading: false
+  isLoading: false,
+  isError: false,
 };
 
 export default function request(state = initialState, action) {
@@ -12,9 +13,18 @@ export default function request(state = initialState, action) {
         return {
           ...state,
           loadingInstances,
+          isError: false,
           isLoading: loadingInstances > 0
         };
       }
+
+    case 'REQUEST_ERROR':
+    {
+      return {
+        ...state,
+        isError: true,
+      };
+    }
 
     case 'REQUEST_FINISH_LOADING':
       {
@@ -23,6 +33,7 @@ export default function request(state = initialState, action) {
         return {
           ...state,
           loadingInstances,
+          isError: false,
           isLoading: loadingInstances > 0
         };
       }

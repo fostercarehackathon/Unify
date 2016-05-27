@@ -7,21 +7,51 @@ import { bindActionCreators } from 'redux';
 import RequestStatus from 'components/request-status';
 import UserBar from 'components/user-bar';
 import MessageBar from 'components/message-bar';
+import autobind from 'autobind-decorator';
 
 import * as MessageActions from 'actions/message';
-
-@connect(null,(dispatch) => ({
+@connect(({users})=> users,(dispatch) => ({
   actions: bindActionCreators(MessageActions, dispatch)
 }))
 class HeaderContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state= {
+      status:''
+    }
+  }
   render() {
     return (
       <div>
-        <RequestStatus status="error" />
+        <RequestStatus status={this.state.status} />
         <UserBar username="Brandon" />
-        <MessageBar {...this.props}/>
+        <MessageBar {...this.props} onSuccess={this.onSuccess} onError={this.onError}/>
       </div>
     );
+  }
+  @autobind
+  onSuccess() {
+    this.setState({
+      status: 'success'
+    },()=> {
+      setTimeout(()=> {
+        this.setState({
+          status: ''
+        })
+      },500)
+    })
+  }
+  @autobind
+  onError() {
+    this.setState({
+      status: 'error'
+    },()=> {
+      setTimeout(()=> {
+        this.setState({
+          status: ''
+        })
+      },500)
+    })
   }
 }
 
