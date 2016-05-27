@@ -9,6 +9,7 @@ import InputField from 'components/inputfield';
 import { Grid, GridCell } from 'components/grid';
 import Select from 'react-select';
 
+import './register-page.scss';
 const fields = ['firstName', 'lastName', 'email', 'phone', 'type'];
 
 var options = [
@@ -33,7 +34,7 @@ class RegisterPage extends Component {
   onRequestAccountSubmit(data) {
     return this.props.actions.registerAccount(data)
       .then(() => {
-        browserHistory.push('/request-account/pending');
+        browserHistory.push('/');
       })
       .catch(({ reason: err }) => {
         if (err.status === 401) {
@@ -91,7 +92,7 @@ class RegisterPage extends Component {
           <Select
             {...type}
             onBlur={null}
-            value={type.value}
+            value={type.value || '0'}
             onChange={this.onTypeChanged}
             options={options}
           />

@@ -23,7 +23,8 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('development'),
       'CONFIG': JSON.stringify(
         {
-          API_URL: common.API_URL
+          API_URL: common.API_URL,
+          TOKEN_HEADER: common.TOKEN_HEADER
         })
     })
   ],

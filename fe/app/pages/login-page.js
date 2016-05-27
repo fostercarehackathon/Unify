@@ -28,10 +28,8 @@ class LoginPage extends Component {
   }
 
   onLoginSubmit({email, password}) {
-    console.log('this.props', this.props);
     return this.props.actions.login(email, password)
       .then(({value}) => {
-        console.log('LOGIN SUCCES');
         handleLoginSuccess(value);
       })
       .catch(({reason: err}) => {

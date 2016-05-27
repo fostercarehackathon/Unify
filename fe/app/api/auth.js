@@ -3,10 +3,11 @@ import { request } from 'requests';
 const apiUrl = CONFIG.API_URL + '/api/auth';
 
 export function login(email, password) {
-  return request.post(`${apiUrl}/signin`, {
-    email,
-    password
-  });
+  return Promise.resolve({ok:true, token: 'as214e1qdasascas'});
+  // return request.post(`${apiUrl}/signin`, {
+  //   email,
+  //   password
+  // });
 }
 
 export function loadSession() {

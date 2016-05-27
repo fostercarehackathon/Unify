@@ -20,7 +20,6 @@ export function logout() {
 export function requireLogin(nextState, replaceState, cb) {
   if (!store.getState().auth.authenticated) {
     const token = localStorage.getItem(CONFIG.TOKEN_HEADER);
-
     if (token) {
       requestConfig.setToken(token);
       store.dispatch(authActions.loadSession())
