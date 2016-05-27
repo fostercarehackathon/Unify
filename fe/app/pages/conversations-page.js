@@ -27,6 +27,10 @@ class ConversationsPage extends Component {
     browserHistory.push(`/conversations/${conversation.id}`);
   }
 
+  getMessages(messageType) {
+    console.log('>>>> GET MESSAGES of type @ ', messageType);
+  }
+
   renderConversations(conversations) {
     if (!Object.keys(conversations).length) {
       return (
@@ -59,17 +63,17 @@ class ConversationsPage extends Component {
   }
 
   render() {
-    const { summary } = this.props;
-    const conversations = this.renderConversations(this.props.conversations);
+    const { summary, conversations } = this.props;
+    const conversationsList = this.renderConversations(conversations);
 
     return (
       <Grid className="ConversationsPage app-wrapper">
         <GridCell col={2}>
-          <MessagesSummary items={summary} />
+          <MessagesSummary items={summary} onItemClick={this.getMessages} />
         </GridCell>
 
         <GridCell className="ConversationsList" fit>
-          {conversations}
+          {conversationsList}
           {this.props.children}
         </GridCell>
       </Grid>
