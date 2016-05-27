@@ -36,9 +36,19 @@ class ConversationsPage extends Component {
     const conversations = this.renderConversations(this.props.conversations);
 
     return (
-      <div className="Conversations">
-        {conversations}
-        {this.props.children}
+      <div>
+        <div className="MessagesMenu">
+          <div className="MessagesMenu-TotalMessages">Your messages 26</div>
+          <ul>
+            <li>Unread 1</li>
+            <li>Read 24</li>
+          </ul>
+        </div>
+
+        <div className="Conversations">
+          {conversations}
+          {this.props.children}
+        </div>
       </div>
     );
   }

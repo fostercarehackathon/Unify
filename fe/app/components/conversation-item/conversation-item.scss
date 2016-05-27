@@ -40,6 +40,9 @@
   .Icon {
     @include translateCenter;
 
+    width: 26px;
+    height: 26px;
+
     &--checkmark {
       fill: $color-fountain-blue;
     }
