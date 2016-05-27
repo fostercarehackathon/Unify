@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import ConversationsPage from 'pages/conversations-page';
 import {loadConversations} from 'actions/conversations';
 
-console.log('loadConvesationsloadConvesationsloadConvesations', loadConversations);
 @asyncConnect([{
   promise: ({store: {dispatch}}) => {
     return dispatch(loadConversations());
@@ -15,10 +14,13 @@ console.log('loadConvesationsloadConvesationsloadConvesations', loadConversation
   conversations: conversations.conversations
 }), ({loadConversations}))
 export default class ConversationsContainer extends Component {
+  static propTypes = {
+    conversations: PropTypes.array.isRequired,
+  };
+
   render() {
-    console.log('XXXX', this.props.conversations);
     return (
-      <ConversationsPage/>
+      <ConversationsPage {...this.props}/>
     )
   }
 }
