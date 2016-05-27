@@ -1,9 +1,26 @@
 @import '~styles/settings/colors.scss';
 
-.ConversationDetails {
-  position: relative;
+.ConversationContainer {
+
+  .OverlayContainer {
+    top: 150px;
+    transform: translateX(-50%);
+
+    height: calc(100% - 150px);
+    margin: 0;
+  }
 
   .OverlayContentChildren {
+    height: 100%;
+
     background: $color-white;
   }
+}
+
+.ConversationContainer-Header {
+  padding: 40px;
+}
+
+.ConversationContainer-Icon {
+  fill: $color-fountain-blue;
 }
