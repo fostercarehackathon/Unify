@@ -21,7 +21,7 @@ export default () => {
       <Route path="/" component={AppContainer} onEnter={requireLogin} />
       <Route path="components" component={ComponentsContainer} />
       <Route path="conversations" component={ConversationsContainer}>
-        <Route path="conversations/:id" component={ConversationContainer} />
+        <Route path="conversation/:id" component={ConversationContainer} />
       </Route>
       <Route component={AccountLayout}>
         <Route path="/login" component={LoginContainer} />
