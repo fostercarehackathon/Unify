@@ -7,7 +7,6 @@ import {
   AppContainer,
   ComponentsContainer,
 
-  MessagesContainer,
   LoginContainer,
   RegisterContainer,
   ConversationContainer,
@@ -18,8 +17,7 @@ import AccountLayout from 'layouts/account-layout';
 
 export default () => {
   return (
-    <Route>
-      <Route path="/" component={AppContainer} onEnter={requireLogin} />
+    <Route path="/" component={AppContainer} onEnter={requireLogin}>
       <Route path="components" component={ComponentsContainer} />
       <Route path="conversations" component={ConversationsContainer}>
         <Route path="conversation/:id" component={ConversationContainer} />
