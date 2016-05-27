@@ -39,6 +39,11 @@ export default class MessageBar extends Component {
       to: this.state.to,
     }).then(()=> {
       this.props.onSuccess();
+      this.setState({
+        subject: '',
+        body: '',
+        to:'0',
+      })
     }).catch(()=>{
       this.props.onError();
     })
@@ -85,14 +90,14 @@ export default class MessageBar extends Component {
             <Icon name="pencil"/>
             <span>Compose message...</span>
           </div>
-          <InputField onChange={this.onSubjectChanged} className="MessageBar-Subject" label="Subject"/>
+          <InputField value={this.state.subject} onChange={this.onSubjectChanged} className="MessageBar-Subject" label="Subject"/>
           <Select
             value={this.state.to}
             onBlur={null}
             onChange={this.onUserChanged}
             options={userOptions}
           />
-          <ReactQuill onChange={this.onBodyChanged} theme='snow' className="MessageBar-Body"/>
+          <ReactQuill value={this.state.body} onChange={this.onBodyChanged} theme='snow' className="MessageBar-Body"/>
           <div className="MessageBar-Footer">
             <Button onClick={this.sendMessage}>Send</Button>
             <Button onClick={this.composeMessage} className="Button--transparent">Cancel</Button>
