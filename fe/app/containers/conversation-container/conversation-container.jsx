@@ -1,5 +1,6 @@
 // deps
 import React, { Component, PropTypes } from 'react';
+import moment from 'moment';
 import { asyncConnect } from 'redux-async-connect';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -35,24 +36,46 @@ class ConversationContainer extends Component {
     messages: PropTypes.array
   };
 
-  renderMessages() {
-    const { messages } = this.props;
+  onBackClick() {
+    console.log('we go back');
+  }
 
-    return messages.map(item => (<ConversationMessage message={item} />));
+  renderTitleIcon() {
+    const respondTime = true === false ? 'respond-today' : 'respond-later';
+
+    return (<Icon className="ConversationContainer-IconTitle" name={respondTime} />);
+  }
+
+  renderMessages() {
+    const { messages } = this.props.conversation;
+
+    return messages.map((item, key) => (
+      <ConversationMessage message={item} key={`message-${key}`} />
+    ));
   }
 
   render() {
-    const { id, lastMessage } = this.props.conversation;
+    const { id, lastUpdated, title } = this.props.conversation;
 
     return (
       <Overlay className="ConversationContainer" isOpen={id ? true : false }>
         <div className="ConversationContainer-Header">
-          <Icon
-            className="ConversationContainer-Icon"
-            onClick={(ev) => console.log(ev)}
-            name="chevron-left" />
+          <a className="ConversationContainer-Icon" onClick={this.onBackClick}>
+            <Icon name="chevron-left" />
+          </a>
           <p className="ConversationContainer-ConversationDetails">Conversation Details</p>
-          <p className="ConversationContainer-LastMessage">Last message: {lastMessage}</p>
+          <p className="ConversationContainer-LastMessage">
+            Last message: <strong>{moment(lastUpdated).startOf('day').fromNow()}</strong>
+          </p>
+        </div>
+
+        <h2 className="ConversationContainer-Title">
+          {this.renderTitleIcon()}
+          {title}
+        </h2>
+
+        <div className="ConversationContainer-Messages">
+          {this.renderMessages()}
         </div>
       </Overlay>
     );

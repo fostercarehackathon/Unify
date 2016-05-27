@@ -26,14 +26,15 @@ $back-icon-color: $color-gray;
 }
 
 .AccountLayout-logo {
-  width: 170px;
-  height: 40px;
-  margin-top: 40px;
-  margin-left: 200px;
-  margin-bottom: 160px;
+  display: block;
+
+  width: 100%;
+  margin: 40px 0;
+  text-align: center;
 
   img {
-    max-width: 100%;
+    display: inline-block;
+    max-width: 170px;
   }
 }
 

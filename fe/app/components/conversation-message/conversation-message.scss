@@ -1,7 +1,49 @@
+@import '~styles/settings/colors.scss';
+
 .ConversationMessage {
   position: relative;
 
   &.active {
 
   }
+}
+
+
+.ConversationMessage-Details {
+  list-style: none;
+  list-style-image: none;
+
+  padding: 20px 0;
+
+  border-top: 1px solid rgba(#163747, 0.11);
+
+  color: $color-emperor;
+  font-size: 16px;
+  font-weight: 300;
+
+  li {
+    display: inline-block;
+
+    vertical-align: top;
+  }
+}
+
+.CMD-From {
+  width: 25%;
+  color: $color-hit-gray;
+}
+
+.CMD-Body {
+  width: 50%;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.CMD-ReceivedDate {
+  width: 25%;
+
+  font-weight: 400;
+  text-align: right;
 }
