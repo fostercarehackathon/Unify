@@ -11,15 +11,13 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace EmpoweringYouth.Controllers
 {
     [RoutePrefix("api/auth")]
     public class AuthController : ApiController
     {
-
-
-
         [HttpPost]
         [Route("signin")]
         public IHttpActionResult SignIn([Required]LoginData loginData)
