@@ -23,10 +23,12 @@ namespace EmpoweringYouth.Controllers
             var requestUser = ControllerUtils.GetUserFromRequest(Request);
             using (var ctx = new EmpoweringYouthContext())
             {
+                var persistenUser = ctx.users.Find(requestUser.Id);
                 var conversation = ctx.conversations.Include("To").Include("From").Include("Messages").Include("Messages.From").Include("Messages.To").
-                    Where(conv => conv.Id == conversationId && (conv.From.Id == requestUser.Id || conv.To.Id == requestUser.Id)).First();
+                    Where(conv => conv.Id == conversationId && (conv.From.Id == persistenUser.Id || conv.To.Id == persistenUser.Id)).First();
                 ConversationData c = new ConversationData();
                 c.From = conversation.From;
+                c.To = conversation.To;
                 c.StartedDate = conversation.StartedDate;
                 c.ReplyIn = conversation.ReplyIn;
                 c.Subject = conversation.Subject;
@@ -41,8 +43,9 @@ namespace EmpoweringYouth.Controllers
             var requestUser = ControllerUtils.GetUserFromRequest(Request);
             using (var ctx = new EmpoweringYouthContext())
             {
+                var persistenUser = ctx.users.Find(requestUser.Id);
                 var conversations = ctx.conversations.Include("To").Include("From").ToList();
-                conversations = conversations.Where(c => c.To.Id == requestUser.Id || c.From.Id == requestUser.Id).ToList();
+                conversations = conversations.Where(c => (c.To.Id == requestUser.Id || c.From.Id == requestUser.Id)).ToList();
                 var conversationsData = new List<ConversationData>();
                 foreach (Conversation c in conversations)
                 {
@@ -68,6 +71,7 @@ namespace EmpoweringYouth.Controllers
             var requestUser = ControllerUtils.GetUserFromRequest(Request);
             using (var ctx = new EmpoweringYouthContext())
             {
+                var persistenUser = ctx.users.Find(requestUser.Id);
                 var conversations = ctx.conversations.Include("To").Include("From").Include("Messages").Include("Messages.From").Include("Messages.To").
                     Where(conv => (conv.From.Id == requestUser.Id || conv.To.Id == requestUser.Id)).ToList();
 

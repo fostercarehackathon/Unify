@@ -13,7 +13,6 @@ using System.Web.Http.Cors;
 namespace EmpoweringYouth.Controllers
 {
     [RoutePrefix("api/messages")]
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class MessagesController : ApiController
     {
 
@@ -31,6 +30,7 @@ namespace EmpoweringYouth.Controllers
             {
 
                 var toUser = ctx.users.Where(u => u.Username == messageData.To).Single();
+                var fromUser = ctx.users.Find(requestUser.Id);
                 if (!messageData.ConversationId.HasValue)
                 {
                     Conversation conversation = new Conversation();
@@ -38,11 +38,11 @@ namespace EmpoweringYouth.Controllers
                     conversation.LastMessageDate = conversation.StartedDate = DateTime.Now;
                     conversation.Subject = messageData.Subject;
                     conversation.To = toUser;
-                    conversation.From = requestUser;
+                    conversation.From = fromUser;
                     ctx.conversations.Add(conversation);
                     ctx.SaveChanges();
                     Message m = buildMessage(conversation, messageData, toUser);
-                    m.From = requestUser;
+                    m.From = fromUser;
                     ctx.messages.Add(m);
                     conversation.Messages.Add(m);
                     ctx.SaveChanges();
@@ -66,7 +66,7 @@ namespace EmpoweringYouth.Controllers
                     existingConversation.ReplyDate = replyDate;
                     existingConversation.LastMessageDate = DateTime.Now;
                     Message m = buildMessage(existingConversation, messageData, toUser);
-                    m.From = requestUser;
+                    m.From = fromUser;
                     ctx.messages.Add(m);
                     existingConversation.Messages.Add(m);
                     ctx.SaveChanges();
