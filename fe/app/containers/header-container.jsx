@@ -24,7 +24,7 @@ class HeaderContainer extends Component {
     return (
       <div>
         <RequestStatus status={this.state.status} />
-        <UserBar username="Brandon" />
+        <UserBar username={` ${this.props.auth.session.firstname} ${this.props.auth.session.lastname}`} />
         <MessageBar {...this.props} onSuccess={this.onSuccess} onError={this.onError}/>
       </div>
     );
