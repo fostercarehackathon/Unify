@@ -1,5 +1,3 @@
-import * as conversationApi from 'api/conversation';
-
 export const loadConversation = (conversation) => ({
   type: 'LOAD_CONVERSATION',
   payload: conversation

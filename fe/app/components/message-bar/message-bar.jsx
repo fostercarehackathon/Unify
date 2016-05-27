@@ -16,7 +16,9 @@ export default class MessageBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      composing: false
+      composing: false,
+      subject: '',
+      body: '',
     }
   }
 
@@ -24,12 +26,30 @@ export default class MessageBar extends Component {
   composeMessage() {
     this.setState({
       composing: !this.state.composing,
-    })
+    });
   }
 
   @autobind
   sendMessage() {
+    this.props.actions.saveMessage({
+      subject: this.state.subject,
+      body: this.state.body,
+      to: 'ionut.radu@kalon.ro'
+    })
+  }
 
+  @autobind
+  onSubjectChanged(value) {
+    this.setState({
+      subject: value,
+    });
+  }
+
+  @autobind
+  onBodyChanged(value) {
+    this.setState({
+      body: value,
+    });
   }
 
   renderComposerBody() {
@@ -43,8 +63,8 @@ export default class MessageBar extends Component {
             <Icon name="pencil"/>
             <span>Compose message...</span>
           </div>
-          <InputField className="MessageBar-Subject" label="Subject"/>
-          <ReactQuill theme='snow' className="MessageBar-Body"/>
+          <InputField onChange={this.onSubjectChanged} className="MessageBar-Subject" label="Subject"/>
+          <ReactQuill onChange={this.onBodyChanged} theme='snow' className="MessageBar-Body"/>
           <div className="MessageBar-Footer">
             <Button onClick={this.sendMessage}>Send</Button>
             <Button onClick={this.composeMessage} className="Button--transparent">Cancel</Button>

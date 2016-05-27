@@ -68,18 +68,12 @@ class LoginPage extends Component {
           <div className="AccountLayout-formActions">
             <div className="LoginPage-actions">
               <Link
-                to="/forgot-password"
-                className="LoginPage-forgotPassword"
-              >
-                Forgot password?
-              </Link>
-              <Button type="submit" onClick={this.onLoginSubmit}>Submit</Button>
-              <Link
                 to="/register"
                 className="LoginPage-register"
               >
                 Register
               </Link>
+              <Button type="submit" onClick={this.onLoginSubmit}>Submit</Button>
             </div>
           </div>
         </form>

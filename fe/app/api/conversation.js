@@ -6,6 +6,6 @@ export function loadConversation(id) {
   return request.get(`${apiUrl}/conversation/${id}`);
 }
 
-export function postConversation() {
-  // @TODO
+export function saveConversation(conversationData) {
+  return request.post(`${apiUrl}/conversations`, conversationData);
 }

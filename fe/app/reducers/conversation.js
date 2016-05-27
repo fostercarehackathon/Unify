@@ -1,9 +1,3 @@
-// const initialState = {
-//   id: null,
-//   lastUpdated: null,
-//   messages: []
-// };
-
 const initialState = {
   id: null,
   subject: null,
