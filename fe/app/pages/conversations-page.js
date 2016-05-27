@@ -14,8 +14,9 @@ import './conversations-page.scss';
 class ConversationsPage extends Component {
   static propTypes = {
     conversations: PropTypes.array.isRequired,
-    children: PropTypes.element,
+    summary: PropTypes.object.isRequired,
 
+    children: PropTypes.element,
     push: PropTypes.func
   };
 
@@ -51,12 +52,13 @@ class ConversationsPage extends Component {
   }
 
   render() {
+    const { summary } = this.props;
     const conversations = this.renderConversations(this.props.conversations);
 
     return (
       <Grid className="ConversationsPage app-wrapper">
         <GridCell col={2}>
-          <MessagesSummary />
+          <MessagesSummary items={summary} />
         </GridCell>
 
         <GridCell className="ConversationsList" fit>
