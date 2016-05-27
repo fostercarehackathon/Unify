@@ -8,7 +8,7 @@
     "url": "git+https://github.com/fostercarehackathon/Unify.git"
   },
   "scripts": {
-    "start": "webpack-dev-server --inline --hot",
+    "start": "NODE_ENV=development webpack-dev-server --inline --progress --colors --hot",
     "build": "npm run clean && NODE_ENV=production webpack && gulp assets:replace",
     "clean": "rm -rf ./dist",
     "lint": "eslint app/**/*.js",
@@ -22,6 +22,7 @@
     "axios": "^0.11.1",
     "babel-runtime": "^6.6.1",
     "classnames": "^2.2.3",
+    "draft-js": "^0.7.0",
     "es6-promise": "^3.1.2",
     "gulp": "^3.9.1",
     "gulp-html-replace": "^1.5.5",
