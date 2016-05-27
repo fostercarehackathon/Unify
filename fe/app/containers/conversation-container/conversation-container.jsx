@@ -1,10 +1,10 @@
 // deps
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
+import { asyncConnect } from 'redux-async-connect';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autobind from 'autobind-decorator';
-import cx from 'classnames';
 
 import * as ConversationActions from 'actions/conversation';
 
@@ -18,6 +18,11 @@ import Overlay from 'components/overlay';
 // styles
 import './conversation-container.scss';
 
+@asyncConnect([{
+  promise: ({ store: { dispatch }, params: { id } }) => {
+    return dispatch(ConversationActions.loadConversation(id));
+  }
+}])
 @connect(
   (store) => ({
     conversation: store.conversation
@@ -61,8 +66,7 @@ class ConversationContainer extends Component {
     const { messages } = this.props.conversation;
 
     return messages.map((item, key) => (
-      // <ConversationMessage message={item} key={`message-${key}`} onClick={this.onMessageClick} />
-      <div>message</div>
+      <ConversationMessage message={item} key={`message-${key}`} onClick={this.onMessageClick} />
     ));
   }
 

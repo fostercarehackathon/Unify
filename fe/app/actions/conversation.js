@@ -1,6 +1,8 @@
-export const loadConversation = (conversation) => ({
+import * as conversationApi from 'api/conversation';
+
+export const loadConversation = (id) => ({
   type: 'LOAD_CONVERSATION',
-  payload: conversation
+  payload: conversationApi.loadConversation(id)
 });
 
 export const setActiveMessage = (conversationId, messageId) => ({

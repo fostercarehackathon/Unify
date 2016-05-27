@@ -8,21 +8,14 @@ const initialState = {
 
 export default function conversation(state = initialState, action) {
   switch (action.type) {
-    case 'LOAD_CONVERSATION':
+    case 'LOAD_CONVERSATION_SUCCESS':
       return Object.assign({}, action.payload);
 
+    case 'LOAD_CONVERSATION_FAIL':
+      return Object.assign({}, initialState);
+
     case 'SET_ACTIVE_MESSAGE':
-      messages.map(item => {
-        const changedItem = Object.assign({}, item);
-        changedItem.active = false;
-
-        if (changedItem.id === action.payload.messageId) {
-          changedItem.active = true;
-        }
-        return changedItem;
-      });
-
-      return Object.assing({}, state, { messages });
+      return state;
 
     default:
       return state;
