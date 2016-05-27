@@ -4,6 +4,7 @@ import autobind from 'autobind-decorator';
 import moment from 'moment';
 import cx from 'classnames';
 
+import ReactQuill from 'react-quill';
 
 import { Editor, EditorState } from 'draft-js';
 
@@ -24,22 +25,12 @@ class ConversationMessage extends Component {
     };
   }
 
-  @autobind
-  onEditorChange(es) {
-    console.log('on edit');
-    this.setState({
-      editorState: es
-    });
-  }
-
   render() {
     const { message, onClick } = this.props;
 
     const { editorState } = this.state;
 
     const { active, id, body, date, from } = message;
-
-    console.log(body);
 
     return (
       <div className={
@@ -59,11 +50,7 @@ class ConversationMessage extends Component {
         </ul>
 
         <div className="ConversationMessage-Editor">
-          <Editor
-            editorState={editorState}
-            onChange={this.onEditorChange}
-            placeholder="Write reply"
-          />
+          <ReactQuill value={editorState} />
         </div>
       </div>
     );
