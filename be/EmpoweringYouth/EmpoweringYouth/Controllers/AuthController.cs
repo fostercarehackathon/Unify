@@ -32,10 +32,10 @@ namespace EmpoweringYouth.Controllers
             {
                 var passwordHash = AuthService.GeneratePasswordHash(loginData.password);
                 var users = ctx.users.Where(u => u.Username == loginData.username && u.Password == passwordHash);
-                User user = users.Count() == 1 ? users.First() : null;
+                User user = users.Count() > 0 ? users.First() : null;
                 if (user == null)
                 {
-                    return NotFound();
+                    return BadRequest();
                 }
 
 

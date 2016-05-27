@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -24,6 +26,7 @@ namespace EmpoweringYouth.Models
 
         public long ReplyIn { get; set; }
 
+       // [JsonConverter(typeof(StringEnumConverter))]
         public ReplyType ReplyType { get; set; }
 
         public DateTime? ReplyDate { get; set; }

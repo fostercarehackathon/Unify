@@ -125,8 +125,27 @@ namespace EmpoweringYouth.Controllers
                     Where(conv => (conv.From.Id == requestUser.Id || conv.To.Id == requestUser.Id)).ToList();
 
                 var result = new Dictionary<String, long>();
-                var unreadMessages = conversations.Where(c => c.Messages.OrderByDescending(m => m.Date).First().Status == Status.UNREAD).Count();
-                result.Add("unread", unreadMessages);
+
+                List<Conversation> unreadConversations = new List<Conversation>();
+                List<Conversation> readConversations = new List<Conversation>();
+
+                foreach (Conversation c in conversations)
+                {
+                    foreach (Message m in c.Messages)
+                    {
+                        if (m.To.Id.Equals(requestUser.Id) && m.Status.Equals(Status.UNREAD))
+                        {
+                            unreadConversations.Add(c);
+                            continue;
+                        }
+                    }
+
+                    readConversations.Add(c);
+                }
+
+                result.Add("unread", unreadConversations.ToArray().Length);
+                result.Add("read", readConversations.ToArray().Length);
+
                 return result;
             }
 
