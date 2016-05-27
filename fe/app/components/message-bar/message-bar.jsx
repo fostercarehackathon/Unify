@@ -17,10 +17,18 @@ export default class MessageBar extends Component {
   render() {
     return (
       <div className="MessageBar">
-        <Button onClick={this.composeMessage} type="transparent">
+        <Button
+          className="MessageBar-ComposeButton"
+          type="transparent"
+          onClick={this.composeMessage}
+        >
           <Icon name="pencil" />
-          Compose message...
+          <span>Compose message...</span>
         </Button>
+
+        <div className="MessageBar-Composer">
+          message composer here
+        </div>
       </div>
     );
   }
