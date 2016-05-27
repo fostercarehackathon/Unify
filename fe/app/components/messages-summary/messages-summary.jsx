@@ -14,12 +14,15 @@ export default class MessagesSummary extends Component {
   };
 
   static defaultProps = {
-    items: [],
+    items: {},
+    activeItem: 0,
     onItemClick: () => {}
   };
 
   getItems() {
-    const { items } = this.props;
+    const { items, activeItem, onItemClick } = this.props;
+
+    // console.log('!!!! ACTIVE ITEM @ ', activeItem === index));
 
     if (!Object.keys(items)) { return null; }
 
@@ -27,12 +30,19 @@ export default class MessagesSummary extends Component {
       const itemType = item;
       const itemCount = items[item];
 
+      const itemIsActive = (activeItem === index);
+      const itemAction = itemIsActive ? null : onItemClick.bind(this, item);
+
       const itemClassName = cx('MessagesSummary-Item', {
-        'MessagesSummary-lolozaur': true
+        'MessagesSummary-Item--active': itemIsActive
       });
 
       return (
-        <li key={'summary-' + index} className={itemClassName}>
+        <li
+          key={'summary-' + index}
+          className={itemClassName}
+          onClick={itemAction}
+        >
           {itemType} <span className="MessagesSummary-Counter">{itemCount}</span>
         </li>
       );
@@ -45,11 +55,14 @@ export default class MessagesSummary extends Component {
     const { items } = this.props;
 
     // get total items count
-    const totalItems = Object.keys(items).map((item) => {
-      return items[item];
-    }).reduce((prev, current) => {
-      return prev + current;
-    });
+    // const totalItems = Object.keys(items).map((item) => {
+    //   return items[item];
+    // }).reduce((prev, current) => {
+    //   return prev + current;
+    // });
+
+    const totalItems = Object.keys(items).map((item) => items[item])
+                      .reduce((prev, current) => prev + current);
 
     return totalItems;
   }

@@ -6,7 +6,7 @@
 
 .MessagesSummary {
   font-size: 14px;
-  color: $color-emperor;
+  color: $color-hit-gray;
   text-transform: uppercase;
 
   ul {
@@ -14,27 +14,6 @@
 
     margin: 0;
     padding: 0;
-  }
-
-  &-Item {
-    height: 30px;
-
-    padding-left: 30px;
-    margin-bottom: 20px;
-
-    color: $color-hit-gray;
-
-    border-left: 2px solid transparent;
-
-    // HOVER state
-    &:hover {
-      background: #f00;
-    }
-
-    // ACTIVE state
-    &--active {
-      border-color: $color-fountain-blue;
-    }
   }
 }
 
@@ -44,5 +23,33 @@
 
 .MessagesSummary-Counter {
   margin-left: 15px;
-  color: $color-gray;
+  color: $color-silver;
+}
+
+
+.MessagesSummary-Item {
+  height: 30px;
+
+  padding-left: 30px;
+  margin-bottom: 20px;
+
+  color: $color-hit-gray;
+
+  border-left: 2px solid transparent;
+
+  // HOVER state
+  &:hover:not(.MessagesSummary-Item--active) {
+    cursor: pointer;
+    border-color: $color-hit-gray;
+  }
+
+  // ACTIVE state
+  &--active {
+    color: $color-fountain-blue;
+    border-color: $color-fountain-blue;
+
+    .MessagesSummary-Counter {
+      color: $color-fountain-blue;
+    }
+  }
 }
