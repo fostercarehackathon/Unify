@@ -1,0 +1,49 @@
+/*------------------------------------*\
+    Button component
+\*------------------------------------*/
+
+@import '~styles/settings/colors';
+
+// settings
+$button-defaults: (
+  background: $color-bittersweet,
+  color: #fff,
+
+  hoverBackground: darken($color-bittersweet, 5%)
+);
+
+$button-transparent: (
+  background: none,
+  color: $color-tundora
+);
+
+.Button {
+  position: relative;
+  display: inline-block;
+
+  padding: 16px 72px;
+
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  white-space: nowrap;
+
+  background: map-get($button-defaults, 'background');
+  color: map-get($button-defaults, 'color');
+
+  border: 0;
+  outline: none;
+
+  cursor: pointer;
+  user-select: none;
+
+  // hover
+  &:hover {
+    background: #f00; //map-get($button-defaults, 'hoverBackground');
+  }
+}
+
+.Button--transparent {
+  background: map-get($button-transparent, background);
+  color: map-get($button-transparent, color);
+}
