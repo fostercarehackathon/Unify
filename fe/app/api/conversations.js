@@ -19,7 +19,7 @@ const conversationsMock = [
     from: 'John Doe',
     date: '12-01-2016',
     replyIn: null,
-    status: 'read',
+    status: 'unread',
     tag: 'pregnancy'
   },
   {
@@ -28,7 +28,7 @@ const conversationsMock = [
     from: 'John Doe',
     date: '12-01-2016',
     replyIn: 3,
-    status: 'read',
+    status: 'unread',
     tag: 'pregnancy'
   },
   {
