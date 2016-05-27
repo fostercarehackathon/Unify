@@ -1,9 +1,9 @@
 import { request } from 'requests';
 
-const apiUrl = CONFIG.API_URL;
+const apiUrl = CONFIG.API_URL + '/api';
 
 export function loadConversation(id) {
-  return request.get(`${apiUrl}/conversation/${id}`);
+  return request.get(`${apiUrl}/conversations/${id}`);
 }
 
 export function saveConversation(conversationData) {
