@@ -1,6 +1,6 @@
 const initialState = {
   id: null,
-  subject: null,
+  subject: '',
   replyIn: 0,
   lastMessageDate: Date.now(),
   messages: []

@@ -29,8 +29,7 @@
     .ConversationMessage-Editor {
       display: block;
 
-      min-height: 100px;
-      padding: 20px;
+      min-height: 170px;
       margin: 0 0 40px 0;
 
       border: 1px solid $color-hit-gray;
@@ -102,4 +101,8 @@
 
 .ConversationMessage-Editor {
   display: none;
+}
+
+.ConversationMessage-Submit {
+  margin-bottom: 40px;
 }

@@ -4,9 +4,9 @@ import autobind from 'autobind-decorator';
 import moment from 'moment';
 import cx from 'classnames';
 
+import Button from 'components/button';
 import ReactQuill from 'react-quill';
 
-import { Editor, EditorState } from 'draft-js';
 
 // styles
 import './conversation-message.scss';
@@ -14,19 +14,20 @@ import './conversation-message.scss';
 class ConversationMessage extends Component {
   static propTypes = {
     message: PropTypes.object,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    sendMessage: PropTypes.func
   };
 
   constructor(...params) {
     super(...params);
 
     this.state = {
-      editorState: EditorState.createEmpty()
+      editorState: ''
     };
   }
 
   render() {
-    const { message, onClick } = this.props;
+    const { message, onClick, sendMessage } = this.props;
 
     const { editorState } = this.state;
 
@@ -49,9 +50,9 @@ class ConversationMessage extends Component {
           <li className="CMD-BodyLarge">{body}</li>
         </ul>
 
-        <div className="ConversationMessage-Editor">
-          <ReactQuill value={editorState} />
-        </div>
+        <ReactQuill className="ConversationMessage-Editor" value={editorState} theme="snow" />
+
+        <Button className="ConversationMessage-Submit" onClick={sendMessage}>Send</Button>
       </div>
     );
   }

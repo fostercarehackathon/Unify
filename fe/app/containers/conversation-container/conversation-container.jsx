@@ -67,7 +67,12 @@ class ConversationContainer extends Component {
     const { messages } = this.props.conversation;
 
     return messages.map((item, key) => (
-      <ConversationMessage message={item} key={`message-${key}`} onClick={this.onMessageClick} />
+      <ConversationMessage
+        message={item}
+        key={`message-${key}`}
+        onClick={this.onMessageClick}
+        sendMessage={() => {console.log('sending message');}}
+      />
     ));
   }
 
