@@ -22,8 +22,6 @@ export default class MessagesSummary extends Component {
   getItems() {
     const { items, activeItem, onItemClick } = this.props;
 
-    // console.log('!!!! ACTIVE ITEM @ ', activeItem === index));
-
     if (!Object.keys(items)) { return null; }
 
     const summaryItems = Object.keys(items).map((item, index) => {
@@ -54,13 +52,7 @@ export default class MessagesSummary extends Component {
   getTotalItems() {
     const { items } = this.props;
 
-    // get total items count
-    // const totalItems = Object.keys(items).map((item) => {
-    //   return items[item];
-    // }).reduce((prev, current) => {
-    //   return prev + current;
-    // });
-
+    // count items
     const totalItems = Object.keys(items).map((item) => items[item])
                       .reduce((prev, current) => prev + current);
 
