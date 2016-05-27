@@ -29,8 +29,15 @@ class ConversationsPage extends Component {
   renderConversations(conversations) {
     console.log('conversations @ ', conversations);
 
-    if (!Object.keys(conversations).length) {
-      return null;
+    if (Object.keys(conversations).length) {
+      return (
+        <div className="ConversationsList-NoMessages">
+          <div className="ConversationsList-NoMessagesContainer">
+            <img src="/app/images/no-messages.png" />
+            <p>Messages are coming soon...</p>
+          </div>
+        </div>
+      );
     }
 
     // map conversations
