@@ -10,7 +10,7 @@ import { Grid, GridCell } from 'components/grid';
 import Select from 'react-select';
 
 import './register-page.scss';
-const fields = ['firstName', 'lastName', 'email', 'phone', 'type'];
+const fields = ['firstname', 'lastname', 'password', 'username', 'type'];
 
 var options = [
   { value: '0', label: 'Child' },
@@ -47,17 +47,16 @@ class RegisterPage extends Component {
 
   @autobind
   onTypeChanged(val) {
-    console.log("valvalval", val)
     this.props.fields.type.onChange(val.value);
   }
 
   render() {
     const {
       handleSubmit, fields: {
-      firstName,
-      lastName,
-      email,
-      phone,
+      firstname,
+      lastname,
+      password,
+      username,
       type
     }, error
     } = this.props;
@@ -70,23 +69,24 @@ class RegisterPage extends Component {
         <form onSubmit={handleSubmit(this.onRequestAccountSubmit)}>
           <InputField
             label="First name: "
-            {...firstName}
+            {...firstname}
           />
 
           <InputField
             label="Last name: "
-            {...lastName}
+            {...lastname}
           />
 
           <InputField
             label="Email: "
-            {...email}
+            {...username}
             type="email"
           />
 
           <InputField
-            label="Phone: "
-            {...phone}
+            label="Password: "
+            type="password"
+            {...password}
           />
 
           <Select

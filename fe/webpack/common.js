@@ -202,6 +202,5 @@ exports.postcss = [
   require('autoprefixer')({ browsers: ['last 2 versions'] })
 ];
 
-exports.API_URL = 'http://localhost:3002';
+exports.API_URL = 'http://kalon.azurewebsites.net';
 exports.TOKEN_HEADER = 'authorization';
-// http://10.200.20.146:8080/api/health

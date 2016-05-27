@@ -30,7 +30,7 @@ class LoginPage extends Component {
   }
 
   onLoginSubmit({email, password}) {
-    return this.props.actions.login(email, password)
+    return this.props.actions.login(this.props.fields.email.value, this.props.fields.password.value)
       .then(({value}) => {
         handleLoginSuccess(value);
       })
@@ -73,7 +73,7 @@ class LoginPage extends Component {
               >
                 Forgot password?
               </Link>
-              <Button type="submit">Submit</Button>
+              <Button type="submit" onClick={this.onLoginSubmit}>Submit</Button>
               <Link
                 to="/register"
                 className="LoginPage-register"

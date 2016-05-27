@@ -6,6 +6,7 @@ import {reducer as reduxAsyncConnect} from 'redux-async-connect';
 import request from './request';
 import auth from './auth';
 import conversation from './conversation';
+import conversations from './conversations';
 
 export default combineReducers({
   routing,
@@ -13,5 +14,6 @@ export default combineReducers({
   request,
   reduxAsyncConnect,
   auth,
-  conversation
+  conversation,
+  conversations
 });

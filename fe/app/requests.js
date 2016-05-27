@@ -15,7 +15,7 @@ export const request = axios.create({
 const commonHeaders = request.defaults.headers;
 
 export function setToken(token) {
-  commonHeaders[CONFIG.TOKEN_HEADER] = `${CONFIG.AUTHORIZATION_SCHEME} ${token}`;
+  commonHeaders[CONFIG.TOKEN_HEADER] = token;
 }
 
 export function removeToken() {

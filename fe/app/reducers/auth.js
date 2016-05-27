@@ -2,13 +2,6 @@ const initialState = {
   session: null,
   authenticated: false,
   redirectLocation: '/',
-  accountRequest: {
-    firstName: null,
-    lastName: null,
-    email: null,
-    phone: null,
-    type: null
-  }
 };
 
 export default function auth(state = initialState, action) {

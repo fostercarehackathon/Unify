@@ -7,9 +7,8 @@ export const login = getValidator(() => ({
 }));
 
 export const requestAccount = getValidator(() => ({
-  firstName: [required],
-  lastName: [required],
-  email: [required, email],
-  phone: [required, phone],
-  type: [required]
+  firstname: [required],
+  lastname: [required],
+  password: [required, password],
+  username: [required, email],
 }));

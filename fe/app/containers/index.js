@@ -5,3 +5,4 @@ export MessagesContainer from './messages-container';
 export LoginContainer from './login-container';
 export RegisterContainer from './register-container';
 export ConversationContainer from './conversation-container';
+export ConversationsContainer from './conversations-container';
