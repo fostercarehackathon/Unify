@@ -7,7 +7,7 @@ import autobind from 'autobind-decorator';
 import Button from 'components/button';
 import Icon from 'components/icon';
 import InputField from 'components/inputfield';
-import TextEditor from 'components/text-editor';
+import ReactQuill from 'react-quill';
 // style
 import './message-bar.scss';
 
@@ -44,7 +44,7 @@ export default class MessageBar extends Component {
             <span>Compose message...</span>
           </div>
           <InputField className="MessageBar-Subject" label="Subject"/>
-          <TextEditor className="MessageBar-Body"/>
+          <ReactQuill theme='snow' className="MessageBar-Body"/>
           <div className="MessageBar-Footer">
             <Button onClick={this.sendMessage}>Send</Button>
             <Button onClick={this.composeMessage} className="Button--transparent">Cancel</Button>

@@ -14,7 +14,7 @@ import Icon from 'components/icon';
 import Overlay from 'components/overlay';
 
 // subcomponents
-import ConversationMessage from 'components/conversation-message';
+// import ConversationMessage from 'components/conversation-message';
 
 // styles
 import './conversation-container.scss';
@@ -66,7 +66,8 @@ class ConversationContainer extends Component {
     const { messages } = this.props.conversation;
 
     return messages.map((item, key) => (
-      <ConversationMessage message={item} key={`message-${key}`} onClick={this.onMessageClick} />
+      // <ConversationMessage message={item} key={`message-${key}`} onClick={this.onMessageClick} />
+      <div>message</div>
     ));
   }
 
