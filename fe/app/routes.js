@@ -21,7 +21,7 @@ export default () => {
       <Route path="/" component={AppContainer} onEnter={requireLogin}>
         <IndexRoute onEnter={(nextState, replaceState)=> {replaceState(null, '/conversations')}} />
         <Route path="conversations" component={ConversationsContainer}>
-          <Route path="conversations/:id" component={ConversationContainer} />
+          <Route path=":id" component={ConversationContainer} />
         </Route>
       </Route>
       <Route path="components" component={ComponentsContainer} />
