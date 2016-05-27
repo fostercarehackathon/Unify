@@ -52,6 +52,8 @@ namespace EmpoweringYouth.Controllers
 
                 var response = new Dictionary<String, String>();
                 response.Add("token", token);
+                response.Add("firstname", user.Firstname);
+                response.Add("lastname", user.Lastname);
                 return Ok(response);
             }
 
@@ -67,7 +69,7 @@ namespace EmpoweringYouth.Controllers
                 user.Password = AuthService.GeneratePasswordHash(user.Password);
                 ctx.users.Add(user);
                 ctx.SaveChanges();
-                return Ok();
+                return Ok(user);
             }
         }
 
