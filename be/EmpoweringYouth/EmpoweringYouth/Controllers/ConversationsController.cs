@@ -6,10 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace EmpoweringYouth.Controllers
 {
     [RoutePrefix("api/conversations")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ConversationsController : ApiController
     {
 
@@ -39,7 +41,8 @@ namespace EmpoweringYouth.Controllers
             var requestUser = ControllerUtils.GetUserFromRequest(Request);
             using (var ctx = new EmpoweringYouthContext())
             {
-                var conversations = ctx.conversations.Include("To").Include("From").Where(conv => (conv.From.Id == requestUser.Id || conv.To.Id == requestUser.Id)).ToList();
+                var conversations = ctx.conversations.Include("To").Include("From").ToList();
+                conversations = conversations.Where(c => c.To.Id == requestUser.Id || c.From.Id == requestUser.Id).ToList();
                 var conversationsData = new List<ConversationData>();
                 foreach (Conversation c in conversations)
                 {
