@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -22,6 +23,7 @@ namespace EmpoweringYouth.Models
         [JsonIgnore]
         public String Password { get; set; }
 
+        [JsonConverter(typeof(StringEnumConverter))]
         public Role Role { get; set; }
     }
 }

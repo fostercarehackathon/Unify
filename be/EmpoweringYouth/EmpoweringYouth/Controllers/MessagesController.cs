@@ -19,7 +19,11 @@ namespace EmpoweringYouth.Controllers
         public IHttpActionResult AddNewMessage(MessageData messageData)
         {
 
-            User requestUser = getUser();
+            User requestUser = ControllerUtils.GetUserFromRequest(Request);
+            if (requestUser == null)
+            {
+                return BadRequest();
+            }
             //if conversation id !=null add to conversation
             using (var ctx = new EmpoweringYouthContext())
             {
@@ -69,23 +73,6 @@ namespace EmpoweringYouth.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("conversations/{conversationId:int}")]
-        public ConversationData GetConversation(int conversationId)
-        {
-            using (var ctx = new EmpoweringYouthContext())
-            {
-                var conversation = ctx.conversations.Include("Messages").Include("Messages.From").Include("Messages.To").Where(conv => conv.Id == conversationId).First();
-                ConversationData c = new ConversationData();
-                c.From = conversation.From;
-                c.StartedDate = conversation.StartedDate;
-                c.ReplyIn = conversation.ReplyIn;
-                c.Subject = conversation.Subject;
-                c.messages = conversation.Messages.OrderByDescending(m => m.Date).ToList();
-                return c;
-            }
-        }
-
         private Message buildMessage(Conversation c, MessageData messageData, User receiver)
         {
             return new Message
@@ -97,19 +84,6 @@ namespace EmpoweringYouth.Controllers
             };
         }
 
-        private User getUser()
-        {
-            IEnumerable<string> requestHeaders;
-            var authHeader = string.Empty;
 
-            if (Request.Headers.TryGetValues("Authorization", out requestHeaders))
-            {
-                authHeader = requestHeaders.FirstOrDefault();
-                User user = AuthService.GetFromCache(authHeader);
-                return user;
-            }
-            return null;
-
-        }
     }
 }

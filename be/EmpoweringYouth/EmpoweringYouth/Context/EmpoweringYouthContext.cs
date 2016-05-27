@@ -10,9 +10,15 @@ namespace EmpoweringYouth.Context
     public class EmpoweringYouthContext : DbContext
     {
 
-        public EmpoweringYouthContext() : base()
+        public EmpoweringYouthContext() : base("EYContext")
         {
             Database.SetInitializer<EmpoweringYouthContext>(new EmpoweringYouthContextInitializer());
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<User> users { get; set; }

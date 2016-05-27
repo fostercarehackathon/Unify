@@ -7,6 +7,8 @@ namespace EmpoweringYouth.Models.Dto
 {
     public class ConversationData
     {
+        public long Id { get; set; }
+
         public User From { get; set; }
 
         public User To { get; set; }
@@ -15,9 +17,9 @@ namespace EmpoweringYouth.Models.Dto
 
         public long ReplyIn { get; set; }
 
-        public DateTime LastMessageDate { get; set; }
+        public DateTime? LastMessageDate { get; set; }
 
-        public DateTime StartedDate { get; set; }
+        public DateTime? StartedDate { get; set; }
 
         public virtual ICollection<Message> messages { get; set; }
 
