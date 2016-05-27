@@ -32,8 +32,6 @@ namespace EmpoweringYouth.Models
 
         public DateTime StartedDate { get; set; }
 
-        public List<Message> messages { get; set; }
-
         public virtual ICollection<Message> Messages { get; set; }
 
         public List<String>[] Tags { get; set; }

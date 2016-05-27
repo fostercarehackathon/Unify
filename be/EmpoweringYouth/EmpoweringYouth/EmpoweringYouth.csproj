@@ -138,15 +138,27 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\EmpoweringYouthContext.cs" />
+    <Compile Include="Context\EmpoweringYouthContextInitializer.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\ControllerUtils.cs" />
+    <Compile Include="Controllers\ConversationsController.cs" />
     <Compile Include="Controllers\HealthController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Role.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Database\Conversation.cs" />
+    <Compile Include="Models\Database\Message.cs" />
+    <Compile Include="Models\Database\ReplyType.cs" />
+    <Compile Include="Models\Database\Role.cs" />
+    <Compile Include="Models\Database\Status.cs" />
+    <Compile Include="Models\Database\User.cs" />
+    <Compile Include="Models\Dto\ConversationData.cs" />
+    <Compile Include="Models\Dto\LoginData.cs" />
+    <Compile Include="Models\Dto\MessageData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AuthService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

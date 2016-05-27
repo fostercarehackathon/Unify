@@ -15,21 +15,27 @@ namespace EmpoweringYouth.Controllers
 
         [HttpGet]
         [Route("{conversationId:int}")]
-        public ConversationData GetConversation(int conversationId)
+        public IHttpActionResult GetConversation(int conversationId)
         {
 
             var requestUser = ControllerUtils.GetUserFromRequest(Request);
             using (var ctx = new EmpoweringYouthContext())
             {
                 var conversation = ctx.conversations.Include("To").Include("From").Include("Messages").Include("Messages.From").Include("Messages.To").
-                    Where(conv => conv.Id == conversationId && (conv.From.Id == requestUser.Id || conv.To.Id == requestUser.Id)).First();
+                    Where(conv => conv.Id == conversationId && (conv.From.Id == requestUser.Id || conv.To.Id == requestUser.Id)).FirstOrDefault();
+
+                if (conversation == null)
+                {
+                    return BadRequest("You are not allowed to view this conversation!");
+                }
+
                 ConversationData c = new ConversationData();
                 c.From = conversation.From;
                 c.StartedDate = conversation.StartedDate;
                 c.ReplyIn = conversation.ReplyIn;
                 c.Subject = conversation.Subject;
                 c.messages = conversation.Messages.OrderByDescending(m => m.Date).ToList();
-                return c;
+                return Ok(c);
             }
         }
 
