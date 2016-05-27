@@ -1,39 +1,70 @@
 // deps
 import React, { Component, PropTypes } from 'react';
+import autobind from 'autobind-decorator';
 import moment from 'moment';
 import cx from 'classnames';
+
+
+import { Editor, EditorState } from 'draft-js';
 
 // styles
 import './conversation-message.scss';
 
 class ConversationMessage extends Component {
   static propTypes = {
-    active: PropTypes.bool,
-    message: PropTypes.object
+    message: PropTypes.object,
+    onClick: PropTypes.func
   };
 
+  constructor(...params) {
+    super(...params);
+
+    this.state = {
+      editorState: EditorState.createEmpty()
+    };
+  }
+
+  @autobind
+  onEditorChange(es) {
+    console.log('on edit');
+    this.setState({
+      editorState: es
+    });
+  }
+
   render() {
-    const { active, message } = this.props;
-    const { from, body, receiveDate } = message;
+    const { message, onClick } = this.props;
+
+    const { editorState } = this.state;
+
+    const { active, id, body, date, from } = message;
+
+    console.log(body);
 
     return (
       <div className={
         cx({
           ConversationMessage: true,
-          ...active
+          active
         })
       }
       >
-        <ul className="ConversationMessage-Details">
-          <li className="CMD-From">{from}</li>
+        <ul className="ConversationMessage-Details" onClick={onClick.bind(this, id)}>
+          <li className="CMD-From">{from.firstname} {from.lastname}</li>
           <li className="CMD-Body">{body}</li>
           <li className="CMD-ReceivedDate">
-            {moment(receiveDate).startOf('hour').fromNow()} - {moment(receiveDate).format('HH:MM')}
+            {moment(date).startOf('hour').fromNow()} - {moment(date).format('HH:MM')}
           </li>
-          <li className="CMD-BodyLarge">{}</li>
+          <li className="CMD-BodyLarge">{body}</li>
         </ul>
 
-        <textarea>Textarea</textarea>
+        <div className="ConversationMessage-Editor">
+          <Editor
+            editorState={editorState}
+            onChange={this.onEditorChange}
+            placeholder="Write reply"
+          />
+        </div>
       </div>
     );
   }

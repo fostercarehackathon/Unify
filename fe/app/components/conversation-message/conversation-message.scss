@@ -4,7 +4,45 @@
   position: relative;
 
   &.active {
+    .CMD-From {
+      color: $color-emperor;
+      font-weight: 400;
 
+      &:after {
+        content: " wrote";
+
+      }
+    }
+
+    .CMD-ReceivedDate {
+      font-weight: 400;
+    }
+
+    .CMD-Body {
+      visibility: hidden;
+    }
+
+    .CMD-BodyLarge {
+      display: block !important;
+    }
+
+    .ConversationMessage-Editor {
+      display: block;
+
+      min-height: 100px;
+      padding: 20px;
+      margin: 0 0 40px 0;
+
+      border: 1px solid $color-hit-gray;
+    }
+
+    .ConversationMessage-Details {
+      cursor: default;;
+
+      &:hover {
+        background: none;
+      }
+    }
   }
 }
 
@@ -13,6 +51,7 @@
   list-style: none;
   list-style-image: none;
 
+  margin: 0;
   padding: 20px 0;
 
   border-top: 1px solid rgba(#163747, 0.11);
@@ -20,6 +59,12 @@
   color: $color-emperor;
   font-size: 16px;
   font-weight: 300;
+
+  cursor: pointer;
+
+  &:hover {
+    background: #fbfbfb;
+  }
 
   li {
     display: inline-block;
@@ -46,4 +91,15 @@
 
   font-weight: 400;
   text-align: right;
+}
+
+.CMD-BodyLarge {
+  display: none !important;
+
+  width: 100%;
+  padding: 40px 50px;
+}
+
+.ConversationMessage-Editor {
+  display: none;
 }
