@@ -57,12 +57,7 @@ export default class MessagesSummary extends Component {
 
   getTotalItems() {
     const { items } = this.props;
-
-    // count items
-    const totalItems = Object.keys(items).map((item) => items[item])
-                      .reduce((prev, current) => prev + current);
-
-    return totalItems;
+    return items.all;
   }
 
   render() {
