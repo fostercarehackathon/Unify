@@ -1,6 +1,8 @@
 // deps
 import React, { Component, PropTypes } from 'react';
-// import autobind from 'autobind-decorator';
+import { browserHistory } from 'react-router';
+import { push } from 'react-router-redux';
+import autobind from 'autobind-decorator';
 
 // components
 import ConversationItem from 'components/conversation-item';
@@ -8,11 +10,16 @@ import ConversationItem from 'components/conversation-item';
 class ConversationsPage extends Component {
   static propTypes = {
     conversations: PropTypes.array.isRequired,
-    children: PropTypes.element
+    children: PropTypes.element,
+
+    push: PropTypes.func
   };
 
+  @autobind
   onConversationClick(conversation) {
     console.log('show conversation @ ', conversation);
+
+    browserHistory.push(`/conversations/${conversation.id}`);
   }
 
   renderConversations(conversations) {
@@ -27,7 +34,7 @@ class ConversationsPage extends Component {
       <ConversationItem
         key={`conversation-${key}`}
         message={conversation}
-        onClick={this.onConversationClick}
+        onClick={this.onConversationClick.bind(this, conversation)}
       />
     ));
   }
@@ -36,7 +43,7 @@ class ConversationsPage extends Component {
     const conversations = this.renderConversations(this.props.conversations);
 
     return (
-      <div>
+      <div className="ConversationsPage app-wrapper">
         <div className="MessagesMenu">
           <div className="MessagesMenu-TotalMessages">Your messages 26</div>
           <ul>

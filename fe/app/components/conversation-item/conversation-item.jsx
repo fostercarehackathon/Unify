@@ -12,7 +12,12 @@ import './conversation-item.scss';
 
 export default class ConversationItem extends Component {
   static propTypes = {
-    message: PropTypes.object.isRequired
+    message: PropTypes.object.isRequired,
+    onClick: PropTypes.func
+  };
+
+  static defaultProps = {
+    onClick: () => {}
   };
 
   getMessageStatusIcon(message) {
@@ -31,7 +36,7 @@ export default class ConversationItem extends Component {
   }
 
   render() {
-    const { message } = this.props;
+    const { message, onClick } = this.props;
     const messageStatusIcon = this.getMessageStatusIcon(message);
 
     const conversationItemClasses = cx('ConversationItem', {
@@ -39,7 +44,7 @@ export default class ConversationItem extends Component {
     });
 
     return (
-      <Grid className={conversationItemClasses}>
+      <Grid className={conversationItemClasses} onClick={onClick}>
         <GridCell className="ConversationItem-StatusIcon" col={1}>
           <Icon name={messageStatusIcon} />
         </GridCell>
