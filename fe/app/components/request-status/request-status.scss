@@ -26,8 +26,15 @@
   }
 }
 
-.RequestStatus .Icon {
-  margin-right: 15px;
+.RequestStatus {
+  span,
+  .Icon {
+    display: inline-block;
+    vertical-align: middle;
+  }
 
-  fill: #fff;
+  .Icon {
+    margin-right: 15px;
+    fill: #fff;
+  }
 }
