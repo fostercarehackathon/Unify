@@ -15,7 +15,7 @@ namespace EmpoweringYouth.Models
 
         public string Body { get; set; }
 
-      //  [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public Status Status { get; set; }
 
         public DateTime? Date { get; set; }
@@ -24,7 +24,7 @@ namespace EmpoweringYouth.Models
 
         public User To { get; set; }
 
-     //   [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public ReplyType ReplyType { get; set; }
 
         public int ReplyIn { get; set; }

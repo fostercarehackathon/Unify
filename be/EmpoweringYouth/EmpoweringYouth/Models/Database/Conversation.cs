@@ -26,7 +26,7 @@ namespace EmpoweringYouth.Models
 
         public long ReplyIn { get; set; }
 
-       // [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public ReplyType ReplyType { get; set; }
 
         public DateTime? ReplyDate { get; set; }
