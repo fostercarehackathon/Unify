@@ -1,31 +1,30 @@
+// const initialState = {
+//   id: null,
+//   lastUpdated: null,
+//   messages: []
+// };
+
 const initialState = {
-  session: null,
-  authenticated: false,
-  redirectLocation: '/',
-  accountRequest: {
-    firstName: null,
-    lastName: null,
-    email: null,
-    phone: null,
-    type: null
-  }
+  id: 1,
+  lastUpdated: null,
+  messages: [
+    {
+      id: 200
+    }
+  ]
 };
 
-export default function auth(state = initialState, action) {
+export default function conversation(state = initialState, action) {
   switch (action.type) {
-    case 'LOGIN_SUCCESS':
+    case 'LOAD_CONVERSATION_SUCCESS':
       return {
         ...state,
         session: action.payload,
         authenticated: true
       };
 
-    case 'LOAD_SESSION_SUCCESS':
-      return {
-        ...state,
-        session: action.payload,
-        authenticated: true
-      };
+    case 'LOAD_CONVERSATION_FAILED':
+      return initialState;
     default:
       return state;
   }
