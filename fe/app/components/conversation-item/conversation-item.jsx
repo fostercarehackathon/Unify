@@ -1,9 +1,11 @@
 // deps
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
+import cx from 'classnames';
 
 // components
 import { Grid, GridCell } from 'components/grid';
+import Icon from 'components/icon';
 
 // styles
 import './conversation-item.scss';
@@ -13,7 +15,13 @@ export default class ConversationItem extends Component {
     message: PropTypes.object.isRequired
   };
 
-  getMessageStatusIcon(replyIn) {
+  getMessageStatusIcon(message) {
+    const { replyIn, status } = message;
+
+    if (status === 'read') {
+      return 'checkmark';
+    }
+
     if (replyIn > 0) {
       return 'respond-later';
     }
@@ -24,14 +32,16 @@ export default class ConversationItem extends Component {
 
   render() {
     const { message } = this.props;
-    const messageIcon = this.getMessageStatusIcon(message.replyIn);
+    const messageStatusIcon = this.getMessageStatusIcon(message);
 
-    console.log('conversation message @ ', this.props.message);
+    const conversationItemClasses = cx('ConversationItem', {
+      [`ConversationItem--${messageStatusIcon}`]: messageStatusIcon
+    });
 
     return (
-      <Grid className="ConversationItem">
-        <GridCell className="ConversationItem-Status" col={1}>
-          {messageIcon}
+      <Grid className={conversationItemClasses}>
+        <GridCell className="ConversationItem-StatusIcon" col={1}>
+          <Icon name={messageStatusIcon} />
         </GridCell>
 
         <GridCell className="ConversationItem-Sender" col={2}>

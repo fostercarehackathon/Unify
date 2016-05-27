@@ -2,7 +2,8 @@
     ConversationItem component
 \*------------------------------------*/
 
-// @import '~styles/settings/colors';
+@import '~styles/settings/colors';
+@import '~styles/tools/mixins';
 
 .ConversationItem {
   width: 100%;
@@ -10,24 +11,39 @@
 
   max-width: 1260px;
 
-  margin-bottom: 10px;
+  margin-bottom: 1px;
 
   background: #fff;
-  border-left: 2px solid #e5e5e5;
+  border-left: 2px solid $color-mercury;
   border-bottom: 1px solid #ebebeb;
 
   font-size: 14px;
   line-height: 55px;
   color: #555;
 
-  .GridCell {
-    border-left: 1px solid #f00;
+  // modifiers
+  &--respond-today {
+    border-left-color: $color-bittersweet;
+  }
+
+  &--respond-later {
+    border-left-color: $color-mustard;
   }
 }
 
-.ConversationItem-Status {
+.ConversationItem-StatusIcon {
+  position: relative;
+
   max-width: 65px;
   margin-right: 25px;
+
+  .Icon {
+    @include translateCenter;
+
+    &--checkmark {
+      fill: $color-fountain-blue;
+    }
+  }
 }
 
 .ConversationItem-Sender {
