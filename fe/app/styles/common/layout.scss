@@ -10,7 +10,17 @@ body {
   background: $color-wild-sand;
 }
 
-// @TODO: move?
+// app logo
+.app-logo {
+  display: inline-block;
+  width: 450px;
+  height: 450px;
+
+  background: url('~images/unify_logo.png') no-repeat center center;
+  background-size: contain;
+}
+
+// app common wrapper
 .app-wrapper {
   width: 100%;
   max-width: 1520px;
@@ -18,6 +28,7 @@ body {
   margin: 0px auto;
 }
 
+// responsive image helper
 img {
   display: block;
   height: auto;
