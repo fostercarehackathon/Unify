@@ -69,11 +69,12 @@ class ConversationMessage extends Component {
 
         <Button
           className="ConversationMessage-Submit"
+          type="link"
           onClick={
             sendMessage.bind(this, conversationId, editorState, to.username)
           }
         >
-          Send
+          Reply
         </Button>
       </div>
     );
