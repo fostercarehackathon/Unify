@@ -6,29 +6,54 @@
 
 const initialState = {
   id: 1,
-  lastUpdated: Date.now() - 20000,
-  title: 'RE: I need help with...',
+  subject: "hi 2",
+  replyIn: 0,
+  lastMessageDate: "2016-05-27T00:15:59.283",
   messages: [
-    {
-      id: 200,
-      from: 'John Doe',
-      body: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.',
-      receiveDate: Date.now() - 10000
-    }
-  ]
+   {
+     id: 1,
+     body: 'hello',
+     status: 1,
+     date: '2016-05-27T00:15:59.337',
+     from: {
+       id: 1,
+       username: 'vlad.datcu@kalon.ro',
+       firstname: 'Vlad',
+       lastname: 'Datcu',
+       role: 'CW'
+     },
+     to: {
+       id: 2,
+       username: 'ionut.radu@kalon.ro',
+       firstname: 'Ionut',
+       lastname: 'Radu',
+       role: 'CW'
+     },
+     replyType: 0,
+     replyIn: 0,
+     replyDate: null
+   }
+ ],
 };
 
 export default function conversation(state = initialState, action) {
   switch (action.type) {
-    case 'LOAD_CONVERSATION_SUCCESS':
-      return {
-        ...state,
-        session: action.payload,
-        authenticated: true
-      };
+    case 'LOAD_CONVERSATION':
+      return Object.assign({}, action.payload);
 
-    case 'LOAD_CONVERSATION_FAILED':
-      return initialState;
+    // case 'SET_ACTIVE_MESSAGE':
+    //   messages.map(item => {
+    //     const changedItem = Object.assign({}, item);
+    //     changedItem.active = false;
+    //
+    //     if (changedItem.id === action.payload.messageId) {
+    //       changedItem.active = true;
+    //     }
+    //     return changedItem;
+    //   });
+    //
+    //   return Object.assing({}, state, { messages });
+
     default:
       return state;
   }
