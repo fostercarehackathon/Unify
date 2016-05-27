@@ -11,22 +11,5 @@ export const requestAccount = getValidator(() => ({
   lastName: [required],
   email: [required, email],
   phone: [required, phone],
-  company: [required]
-}));
-
-export const newPassword = getValidator(() => ({
-  password: [required, password],
-  confirmPassword: [required, match('password', 'Password didn\'t match')]
-}));
-
-export const forgotPassword = getValidator(() => ({
-  email: [required, email]
-}));
-
-export const troubleshoot = getValidator(() => ({
-  firstName: [required],
-  lastName: [required],
-  email: [required, email],
-  subject: [required],
-  message: [required, maxLength(1000)]
+  type: [required]
 }));

@@ -17,5 +17,5 @@ export const loadSession = () => ({
 
 export const registerAccount = (data) => ({
   type: 'REQUEST_ACCOUNT',
-  payload: authApi.requestAccount(data)
+  payload: authApi.registerAccount(data)
 });

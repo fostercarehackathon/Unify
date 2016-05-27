@@ -2,12 +2,19 @@ import React, {Component, PropTypes} from 'react';
 
 import { browserHistory, Link } from 'react-router';
 import { reduxForm } from 'redux-form';
+import autobind from 'autobind-decorator';
 
 import { requestAccount as requestAccountValidation } from './validations';
 import InputField from 'components/inputfield';
 import { Grid, GridCell } from 'components/grid';
+import Select from 'react-select';
 
 const fields = ['firstName', 'lastName', 'email', 'phone', 'type'];
+
+var options = [
+  { value: '0', label: 'Child' },
+  { value: '1', label: 'Mentor' }
+];
 
 @reduxForm({
   form: 'requestAccount',
@@ -22,12 +29,7 @@ class RegisterPage extends Component {
     handleSubmit: PropTypes.func.isRequired
   };
 
-  constructor(...args) {
-    super(...args);
-
-    this.onRequestAccountSubmit = this.onRequestAccountSubmit.bind(this);
-  }
-
+  @autobind
   onRequestAccountSubmit(data) {
     return this.props.actions.registerAccount(data)
       .then(() => {
@@ -42,6 +44,12 @@ class RegisterPage extends Component {
       });
   }
 
+  @autobind
+  onTypeChanged(val) {
+    console.log("valvalval", val)
+    this.props.fields.type.onChange(val.value);
+  }
+
   render() {
     const {
       handleSubmit, fields: {
@@ -53,6 +61,7 @@ class RegisterPage extends Component {
     }, error
     } = this.props;
 
+    console.log("THIS>PROSPDASSDAS", type.value);
     return (
       <div className="RequestAccountPage">
         <h1><Link to="/login"/>Request Account</h1>
@@ -79,9 +88,12 @@ class RegisterPage extends Component {
             {...phone}
           />
 
-          <InputField
-            label="Type: "
+          <Select
             {...type}
+            onBlur={null}
+            value={type.value}
+            onChange={this.onTypeChanged}
+            options={options}
           />
           <Grid align="right" className="AccountLayout-formActions">
             <GridCell fit>

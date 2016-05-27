@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-// import Paper from 'material-ui/Paper';
 
 import { Grid, GridCell } from 'components/grid';
 import Container from 'components/container';
