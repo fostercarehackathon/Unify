@@ -1,10 +1,10 @@
 // deps
-import React, { Component, PropTypes } from 'react';
-import { browserHistory } from 'react-router';
+import React, {Component, PropTypes} from 'react';
+import {browserHistory} from 'react-router';
 import autobind from 'autobind-decorator';
 
 // components
-import { Grid, GridCell } from 'components/grid';
+import {Grid, GridCell} from 'components/grid';
 import ConversationItem from 'components/conversation-item';
 import MessagesSummary from 'components/messages-summary';
 
@@ -32,7 +32,7 @@ class ConversationsPage extends Component {
       return (
         <div className="ConversationsList-NoMessages">
           <div className="ConversationsList-NoMessagesContainer">
-            <img src="/app/images/no-messages.png" />
+            <img src="/app/images/no-messages.png"/>
             <p>Messages are coming soon...</p>
           </div>
         </div>
@@ -40,13 +40,22 @@ class ConversationsPage extends Component {
     }
 
     // map conversations
-    return conversations.map((conversation, key) => (
+    const convers = conversations.map((conversation, key) => (
       <ConversationItem
         key={`conversation-${key}`}
         message={conversation}
         onClick={this.onConversationClick.bind(this, conversation)}
       />
     ));
+    convers.unshift(<div className="ConversationHeader">
+      <div className="ConversationHeader-From" >
+        From
+      </div>
+      <div className="ConversationHeader-Expected">
+      Expected Response
+      </div>
+    </div>)
+    return convers;
   }
 
   render() {
