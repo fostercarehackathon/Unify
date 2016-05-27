@@ -1,7 +1,6 @@
 // deps
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
-import { asyncConnect } from 'redux-async-connect';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autobind from 'autobind-decorator';
@@ -19,14 +18,9 @@ import Overlay from 'components/overlay';
 // styles
 import './conversation-container.scss';
 
-@asyncConnect([{
-  promise: ({store: {dispatch}, params: {id}}) => {
-    return dispatch(ConversationActions.loadConversation(id));
-  }
-}])
 @connect(
   (store) => ({
-    conversation: store.conversation
+    conversation: store.conversation,
   }),
   (dispatch) => ({
     actions: bindActionCreators(ConversationActions, dispatch)
@@ -34,8 +28,9 @@ import './conversation-container.scss';
 )
 class ConversationContainer extends Component {
   static propTypes = {
+    actions: PropTypes.object,
     conversation: PropTypes.object,
-    messages: PropTypes.array
+    params: PropTypes.object
   };
 
   onBackClick() {
@@ -72,10 +67,14 @@ class ConversationContainer extends Component {
   }
 
   render() {
-    const { id, lastMessageDate, subject } = this.props.conversation;
+    //const { id, lastMessageDate, subject } = this.props.conversation;
+
+    const id = 1;
+    const lastMessageDate = Date.now();
+    const subject = 'Hello';
 
     return (
-      <Overlay className="ConversationContainer" isOpen={id ? true : false }>
+      <Overlay className="ConversationContainer" isOpen>
         <div className="ConversationContainer-Header">
           <a className="ConversationContainer-Icon" onClick={this.onBackClick}>
             <Icon name="chevron-left" />

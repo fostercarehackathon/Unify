@@ -4,6 +4,7 @@ import React, {Component, PropTypes} from 'react';
 class ConversationsPage extends Component {
   static propTypes = {
     conversations: PropTypes.array.isRequired,
+    children: PropTypes.element
   };
 
   renderConversations(conversations) {
@@ -22,6 +23,7 @@ class ConversationsPage extends Component {
         <ul>
           {this.renderConversations(this.props.conversations)}
         </ul>
+        {this.props.children}
       </div>
     );
   }
