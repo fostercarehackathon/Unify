@@ -53,10 +53,8 @@ namespace EmpoweringYouth.Controllers
                 }
                 else
                 {
-                    Conversation existingConversation = ctx.conversations.Include("Messages").
-                        Include("Messages.From").Include("Messages.ReplyDate").
-                        Where(conv => conv.Id == messageData.ConversationId).First();
-
+                    Conversation existingConversation = ctx.conversations.Include("Messages").Where(conv => conv.Id == messageData.ConversationId).First();
+                    
                     DateTime replyDate = messageData.ReplyType == ReplyType.DELAYED ? DateTime.Now.AddDays(messageData.ReplyIn) : DateTime.Now;
 
                     Message newMessage = buildMessage(existingConversation, messageData, toUser);
@@ -73,13 +71,8 @@ namespace EmpoweringYouth.Controllers
                     ctx.messages.Add(m);
                     existingConversation.Messages.Add(m);
                     ctx.SaveChanges();
-
-                    foreach (Message message in existingConversation.Messages)
-                    {
-
-                    }
-
-                    return Ok(existingConversation.Messages);
+                    
+                    return Ok();
                 }
             }
         }

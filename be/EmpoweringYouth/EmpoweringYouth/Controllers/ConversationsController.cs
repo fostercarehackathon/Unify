@@ -45,7 +45,7 @@ namespace EmpoweringYouth.Controllers
         }
 
         [HttpGet]
-        public List<ConversationData> GetConversations([FromUri] Status status = Status.ALL, [FromUri] int start = 0, [FromUri] int end = 20)
+        public List<ConversationData> GetConversations([FromUri] Status status = Status.ALL, [FromUri] int start = 0, [FromUri] int end = 500)
         {
             var requestUser = ControllerUtils.GetUserFromRequest(Request);
             List<ConversationData> conversationsData = new List<ConversationData>();
@@ -88,7 +88,7 @@ namespace EmpoweringYouth.Controllers
                     foreach (Message m in c.Messages) {
                         if (m.To.Id.Equals(requestUser.Id) && m.Status.Equals(Status.UNREAD)) {
                             unreadConversations.Add(c);
-                            continue;
+                            break;
                         }
                     }
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,5 +26,8 @@ namespace EmpoweringYouth.Models.Dto
         public virtual ICollection<Message> messages { get; set; }
 
         public List<String>[] Tags { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Status status { get; set; }
     }
 }
