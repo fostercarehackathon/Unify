@@ -21,9 +21,13 @@ class HeaderContainer extends Component {
         <RequestStatus status="success" />
         <RequestStatus status="error" />
 
-        <Button onClick={this.testFunc}>SEND</Button>
-        <Button type="transparent" onClick={this.testFunc}>SEND</Button>
-        <Button type="link" onClick={this.testFunc}>SEND</Button>
+        <div style={{ border: '1px dashed #ccc', padding: '20px' }}>
+          <Button onClick={this.testFunc}>SEND</Button>
+          <br/>
+          <Button type="transparent" onClick={this.testFunc}>Cancel</Button>
+          <br/>
+          <Button type="link" onClick={this.testFunc}>Reply</Button>
+        </div>
       </div>
     );
   }
