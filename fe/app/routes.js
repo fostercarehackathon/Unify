@@ -5,6 +5,8 @@ import { requireLogin } from 'utils/auth';
 
 import {
   AppContainer,
+  ComponentsContainer,
+
   MessagesContainer,
   LoginContainer,
   RegisterContainer,
@@ -17,6 +19,7 @@ export default () => {
   return (
     <Route>
       <Route path="/" component={AppContainer} onEnter={requireLogin} />
+      <Route path="components" component={ComponentsContainer} />
       <Route path="messages" component={MessagesContainer}>
         <Route path="conversation/:id" component={ConversationContainer} />
       </Route>
