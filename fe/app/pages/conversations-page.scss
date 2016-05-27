@@ -4,39 +4,6 @@
   margin-top: 50px;
 }
 
-.MessagesMenu {
-  font-size: 14px;
-  color: $color-emperor;
-  text-transform: uppercase;
-
-  ul {
-    list-style-type: none;
-
-    margin: 0;
-    padding: 0;
-
-    li {
-      height: 30px;
-
-      padding-left: 30px;
-      margin-bottom: 20px;
-
-      color: $color-hit-gray;
-
-      border-left: 2px solid $color-fountain-blue;
-    }
-  }
-}
-
-.MessagesMenu-TotalMessages {
-  margin-bottom: 40px;
-}
-
-.MessagesMenu-Counter {
-  margin-left: 15px;
-  color: $color-gray;
-}
-
 .ConversationsList {
   flex-grow: 1;
 }

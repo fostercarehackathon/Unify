@@ -6,6 +6,7 @@ import autobind from 'autobind-decorator';
 // components
 import { Grid, GridCell } from 'components/grid';
 import ConversationItem from 'components/conversation-item';
+import MessagesSummary from 'components/messages-summary';
 
 // styles
 import './conversations-page.scss';
@@ -47,15 +48,8 @@ class ConversationsPage extends Component {
 
     return (
       <Grid className="ConversationsPage app-wrapper">
-        <GridCell className="MessagesMenu" col={2}>
-          <div className="MessagesMenu-TotalMessages">
-            Your messages <span className="MessagesMenu-Counter">26</span>
-          </div>
-          <ul>
-            <li>All <span className="MessagesMenu-Counter">1</span></li>
-            <li>Unread <span className="MessagesMenu-Counter">1</span></li>
-            <li>Read <span className="MessagesMenu-Counter">24</span></li>
-          </ul>
+        <GridCell col={2}>
+          <MessagesSummary />
         </GridCell>
 
         <GridCell className="ConversationsList" fit>
