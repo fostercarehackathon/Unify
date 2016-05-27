@@ -1,5 +1,9 @@
 // deps
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
+// import autobind from 'autobind-decorator';
+
+// components
+import ConversationItem from 'components/conversation-item';
 
 class ConversationsPage extends Component {
   static propTypes = {
@@ -7,22 +11,33 @@ class ConversationsPage extends Component {
     children: PropTypes.element
   };
 
+  onConversationClick(conversation) {
+    console.log('show conversation @ ', conversation);
+  }
+
   renderConversations(conversations) {
-    if (Object.keys(conversations).length) {
-      return conversations.map((conversation)=> {
-        return (
-          <li>{conversation.id}</li>
-        );
-      })
+    console.log('conversations @ ', conversations);
+
+    if (!Object.keys(conversations).length) {
+      return null;
     }
+
+    // map conversations
+    return conversations.map((conversation, key) => (
+      <ConversationItem
+        key={`conversation-${key}`}
+        message={conversation}
+        onClick={this.onConversationClick}
+      />
+    ));
   }
 
   render() {
+    const conversations = this.renderConversations(this.props.conversations);
+
     return (
       <div className="Conversations">
-        <ul>
-          {this.renderConversations(this.props.conversations)}
-        </ul>
+        {conversations}
         {this.props.children}
       </div>
     );
