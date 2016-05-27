@@ -27,8 +27,6 @@ export default class ConversationsContainer extends Component {
   };
 
   render() {
-    console.log('??? SUMMARY @ ', this.props.summary);
-
     return (
       <ConversationsPage {...this.props} />
     );

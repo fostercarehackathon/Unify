@@ -28,8 +28,6 @@ class ConversationsPage extends Component {
   }
 
   renderConversations(conversations) {
-    console.log('conversations @ ', conversations);
-
     if (!Object.keys(conversations).length) {
       return (
         <div className="ConversationsList-NoMessages">
