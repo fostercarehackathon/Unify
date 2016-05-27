@@ -24,13 +24,19 @@
 
   // modifiers
   &--respond-today {
-    font-weight: 600;
     border-left-color: $color-bittersweet;
+
+    .ConversationItem-Sender {
+      font-weight: 600;
+    }
   }
 
   &--respond-later {
-    font-weight: 600;
     border-left-color: $color-mustard;
+
+    .ConversationItem-Sender {
+      font-weight: 600;
+    }
   }
 }
 
@@ -56,7 +62,7 @@
   max-width: 130px;
   margin-right: 40px;
 
-  font-weight: 600;
+  font-weight: 300;
 }
 
 .ConversationItem-ReplyIn {
