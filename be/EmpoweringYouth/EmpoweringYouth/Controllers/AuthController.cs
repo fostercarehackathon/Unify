@@ -65,7 +65,7 @@ namespace EmpoweringYouth.Controllers
 
         [HttpGet]
         [Route("session")]
-        public IHttpActionResult GetSession(String token)
+        public IHttpActionResult GetSession()
         {
             IEnumerable<string> requestHeaders;
             var authHeader = string.Empty;
