@@ -17,7 +17,7 @@ class HeaderContainer extends Component {
   render() {
     return (
       <div>
-        <RequestStatus status="success" />
+        <RequestStatus status="error" />
         <UserBar username="Brandon" />
         <MessageBar />
         header container here
