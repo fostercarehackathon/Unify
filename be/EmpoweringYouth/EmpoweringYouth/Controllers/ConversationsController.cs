@@ -44,16 +44,40 @@ namespace EmpoweringYouth.Controllers
         }
 
         [HttpGet]
-        public List<ConversationData> GetConversations()
+        public List<ConversationData> GetConversations([FromUri] Status status = Status.ALL, [FromUri] int start = 0, [FromUri] int end = 20)
         {
             var requestUser = ControllerUtils.GetUserFromRequest(Request);
+            List<ConversationData> conversationsData = new List<ConversationData>();
+
             using (var ctx = new EmpoweringYouthContext())
             {
                 var persistenUser = ctx.users.Find(requestUser.Id);
-                var conversations = ctx.conversations.Include("To").Include("From").ToList();
-                conversations = conversations.Where(c => (c.To.Id == requestUser.Id || c.From.Id == requestUser.Id)).ToList();
-                var conversationsData = new List<ConversationData>();
-                foreach (Conversation c in conversations)
+                var conversations = ctx.conversations.Include("To").Include("From").Where(c => (c.To.Id == requestUser.Id || c.From.Id == requestUser.Id));
+                
+                if (status == Status.ALL)
+                {
+
+                    foreach (Conversation c in conversations)
+                    {
+                        conversationsData.Add(new ConversationData
+                        {
+                            Id = c.Id,
+                            From = c.From,
+                            To = c.To,
+                            LastMessageDate = c.LastMessageDate,
+                            Subject = c.Subject,
+                            StartedDate = c.StartedDate,
+                            messages = c.Messages.OrderByDescending(m => m.Date).ToList()
+
+                        });
+                    }
+
+                    return conversationsData;
+                }
+
+                var filteredConversations = conversations.Where(c => c.Messages.FirstOrDefault().Status == status).OrderByDescending(c => c.StartedDate).Skip(start).Take(end - start).ToList();
+
+                foreach (Conversation c in filteredConversations)
                 {
                     conversationsData.Add(new ConversationData
                     {

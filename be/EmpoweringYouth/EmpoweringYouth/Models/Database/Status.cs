@@ -8,6 +8,7 @@ namespace EmpoweringYouth.Models
     public enum Status
     {
         READ,
-        UNREAD
+        UNREAD,
+        ALL
     };
 }
