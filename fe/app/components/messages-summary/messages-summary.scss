@@ -14,16 +14,26 @@
 
     margin: 0;
     padding: 0;
+  }
 
-    li {
-      height: 30px;
+  &-Item {
+    height: 30px;
 
-      padding-left: 30px;
-      margin-bottom: 20px;
+    padding-left: 30px;
+    margin-bottom: 20px;
 
-      color: $color-hit-gray;
+    color: $color-hit-gray;
 
-      border-left: 2px solid $color-fountain-blue;
+    border-left: 2px solid transparent;
+
+    // HOVER state
+    &:hover {
+      background: #f00;
+    }
+
+    // ACTIVE state
+    &--active {
+      border-color: $color-fountain-blue;
     }
   }
 }
