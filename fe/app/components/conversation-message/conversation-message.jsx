@@ -8,6 +8,7 @@ import cx from 'classnames';
 import Button from 'components/button';
 import ReactQuill from 'react-quill';
 
+import Radio from 'components/radio';
 
 
 // styles
@@ -66,6 +67,20 @@ class ConversationMessage extends Component {
           value={editorState}
           theme="snow"
         />
+
+        <div className="ConversationMessage-Duration">
+          <Radio
+            checked={true}
+            label="I will respond today"
+            onChange={this._onChange}
+          />
+          <br />
+          <Radio
+            checked={this.state.checked}
+            label={(<p>I will respond in <strong>4</strong> days</p>)}
+            onChange={this._onChange}
+          />
+        </div>
 
         <Button
           className="ConversationMessage-Submit"

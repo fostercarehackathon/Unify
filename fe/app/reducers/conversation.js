@@ -18,11 +18,7 @@ export default function conversation(state = initialState, action) {
 
 
     case 'POST_MESSAGE_SUCCESS':
-
-
-      const newPostMessages = action.payload;
-      newPostMessages[0].active = true;
-      return Object.assign({}, action.payload, { messages: newPostMessages });
+      return state;
 
     case 'POST_MESSAGE_FAIL':
       return Object.assign({}, initialState);

@@ -47,7 +47,27 @@
     }
 
     .ConversationMessage-Submit {
-      display: block;
+      width: 20%;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .ConversationMessage-Duration {
+      width: 80%;
+      display: inline-block;
+      vertical-align: top;
+      margin-bottom: 20px;
+
+      .Radio {
+        font-size: 14px;
+
+        strong {
+          padding: 0 5px;
+          border-bottom: 1px solid #FF7C5F;
+          font-size: 16px;
+          color: #FF7C5F;
+        }
+      }
     }
   }
 }
@@ -107,6 +127,10 @@
 }
 
 .ConversationMessage-Editor {
+  display: none;
+}
+
+.ConversationMessage-Duration {
   display: none;
 }
 

@@ -56,6 +56,7 @@ class ConversationContainer extends Component {
     const {actions} = this.props;
 
     actions.sendMessage(conversationId, val, to, 0);
+    browserHistory.push('/conversations');
   }
 
   renderTitleIcon() {
