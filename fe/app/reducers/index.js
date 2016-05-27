@@ -8,6 +8,7 @@ import auth from './auth';
 import users from './users';
 import conversation from './conversation';
 import conversations from './conversations';
+import summary from './summary';
 
 export default combineReducers({
   routing,
@@ -17,5 +18,6 @@ export default combineReducers({
   reduxAsyncConnect,
   auth,
   conversation,
-  conversations
+  conversations,
+  summary
 });
