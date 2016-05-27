@@ -5,10 +5,16 @@ import cx from 'classnames';
 // styles
 import './messages-summary.scss';
 
+const MESSAGE_TYPES = {
+  all: 0,
+  read: 1,
+  unread: 2
+};
+
 export default class MessagesSummary extends Component {
   static propTypes = {
     items: PropTypes.object.isRequired,
-    activeItem: PropTypes.number,
+    activeItem: PropTypes.string,
 
     onItemClick: PropTypes.func
   };
@@ -28,7 +34,7 @@ export default class MessagesSummary extends Component {
       const itemType = item;
       const itemCount = items[item];
 
-      const itemIsActive = (activeItem === index);
+      const itemIsActive = (MESSAGE_TYPES[activeItem] === index);
       const itemAction = itemIsActive ? null : onItemClick.bind(this, item);
 
       const itemClassName = cx('MessagesSummary-Item', {

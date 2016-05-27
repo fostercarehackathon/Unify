@@ -13,6 +13,7 @@ import './conversations-page.scss';
 
 class ConversationsPage extends Component {
   static propTypes = {
+    messageStatus: PropTypes.string.isRequired,
     conversations: PropTypes.array.isRequired,
     summary: PropTypes.object.isRequired,
 
@@ -61,13 +62,17 @@ class ConversationsPage extends Component {
   }
 
   render() {
-    const { summary, conversations } = this.props;
+    const { summary, conversations, messageStatus } = this.props;
     const conversationsList = this.renderConversations(conversations);
 
     return (
       <Grid className="ConversationsPage app-wrapper">
         <GridCell col={2}>
-          <MessagesSummary items={summary} onItemClick={this.getMessages} />
+          <MessagesSummary
+            items={summary}
+            activeItem={messageStatus}
+            onItemClick={this.getMessages}
+          />
         </GridCell>
 
         <GridCell className="ConversationsList" fit>

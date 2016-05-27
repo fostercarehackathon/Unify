@@ -10,6 +10,7 @@ import { loadSummary } from 'actions/summary';
 
 function mapStoreToProps(store, ownProps) {
   return {
+    messageStatus: ownProps.location.query.type || 'all',
     conversations: store.conversations.conversations,
     summary: store.summary
   };
@@ -28,6 +29,7 @@ function mapStoreToProps(store, ownProps) {
 @connect(mapStoreToProps, ({ loadConversations }))
 export default class ConversationsContainer extends Component {
   static propTypes = {
+    messageStatus: PropTypes.string.isRequired,
     conversations: PropTypes.array.isRequired,
     summary: PropTypes.object.isRequired
   };
