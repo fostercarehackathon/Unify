@@ -52,7 +52,14 @@ class ConversationMessage extends Component {
 
         <ReactQuill className="ConversationMessage-Editor" value={editorState} theme="snow" />
 
-        <Button className="ConversationMessage-Submit" onClick={sendMessage}>Send</Button>
+        <Button
+          className="ConversationMessage-Submit"
+          onClick={
+            sendMessage.bind(this, editorState)
+          }
+        >
+          Send
+        </Button>
       </div>
     );
   }
