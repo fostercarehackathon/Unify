@@ -41,7 +41,7 @@ namespace EmpoweringYouth.Controllers
                 }
 
 
-                foreach (KeyValuePair<String, User> entry in AuthService.userCache)
+                foreach (KeyValuePair<String, User> entry in AuthService.userCache.ToList())
                 {
                     if (entry.Value.Id.Equals(user.Id))
                     {
