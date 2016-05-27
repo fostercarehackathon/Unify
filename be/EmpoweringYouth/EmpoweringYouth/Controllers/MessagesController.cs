@@ -13,6 +13,7 @@ using System.Web.Http.Cors;
 namespace EmpoweringYouth.Controllers
 {
     [RoutePrefix("api/messages")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class MessagesController : ApiController
     {
 
