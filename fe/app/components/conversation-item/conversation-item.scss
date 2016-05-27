@@ -1,0 +1,56 @@
+/*------------------------------------*\
+    ConversationItem component
+\*------------------------------------*/
+
+// @import '~styles/settings/colors';
+
+.ConversationItem {
+  width: 100%;
+  height: 60px;
+
+  max-width: 1260px;
+
+  margin-bottom: 10px;
+
+  background: #fff;
+  border-left: 2px solid #e5e5e5;
+  border-bottom: 1px solid #ebebeb;
+
+  font-size: 14px;
+  line-height: 55px;
+  color: #555;
+
+  .GridCell {
+    border-left: 1px solid #f00;
+  }
+}
+
+.ConversationItem-Status {
+  max-width: 65px;
+  margin-right: 25px;
+}
+
+.ConversationItem-Sender {
+  max-width: 130px;
+  margin-right: 40px;
+
+  font-weight: 600;
+}
+
+.ConversationItem-ReplyIn {
+  max-width: 90px;
+  margin-right: 40px;
+}
+
+.ConversationItem-Subject {
+  flex-grow: 1; // take all available space
+  max-width: 740px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ConversationItem-Date {
+  color: #a3a3a3;
+}
