@@ -37,6 +37,16 @@ namespace EmpoweringYouth.Controllers
                 {
                     return NotFound();
                 }
+
+
+                foreach (KeyValuePair<String, User> entry in AuthService.userCache.ToList())
+                {
+                    if (entry.Value.Id.Equals(user.Id))
+                    {
+                        AuthService.userCache.Remove(entry.Key);
+                    }
+                }
+
                 var token = AuthService.GenerateToken(user);
                 AuthService.userCache.Add(token, user);
 

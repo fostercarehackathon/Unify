@@ -30,15 +30,6 @@ namespace EmpoweringYouth.Migrations
             //    );
             //
 
-            IList<User> defaultUsers = new List<User>();
-            defaultUsers.Add(new User() { Password = AuthService.GeneratePasswordHash("password"), Username = "vlad.datcu@kalon.ro", Firstname = "Vlad", Lastname = "Datcu", Role = Role.CW });
-            defaultUsers.Add(new User() { Password = AuthService.GeneratePasswordHash("pass"), Username = "ionut.radu@kalon.ro", Firstname = "Ionut", Lastname = "Radu", Role = Role.CW });
-
-            foreach (User u in defaultUsers)
-            {
-                context.users.Add(u);
-            }
-
             base.Seed(context);
         }
     }
