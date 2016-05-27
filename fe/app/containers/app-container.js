@@ -9,7 +9,7 @@ import {load as loadUsers} from 'actions/users';
 
 @asyncConnect([{
   promise: ({store: {getState, dispatch}}) => {
-    return dispatch(loadUsers(getState().auth.session.role));
+    return dispatch(loadUsers(getState().auth.session.role || 'cw'));
   }
 }])
 @connect(({users, auth}) => {
