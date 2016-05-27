@@ -109,5 +109,9 @@
 }
 
 .ConversationContainer-Messages {
+  height: 60%;
   padding: 0 40px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
 }

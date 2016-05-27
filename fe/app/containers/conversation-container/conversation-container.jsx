@@ -4,6 +4,8 @@ import moment from 'moment';
 import { asyncConnect } from 'redux-async-connect';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import autobind from 'autobind-decorator';
+import cx from 'classnames';
 
 import * as ConversationActions from 'actions/conversation';
 
@@ -40,22 +42,36 @@ class ConversationContainer extends Component {
     console.log('we go back');
   }
 
-  renderTitleIcon() {
-    const respondTime = true === false ? 'respond-today' : 'respond-later';
+  @autobind
+  onMessageClick(messageId) {
+    console.log('click on', messageId);
+  }
 
-    return (<Icon className="ConversationContainer-IconTitle" name={respondTime} />);
+  renderTitleIcon() {
+    let replyInIcon = 'checkmark';
+
+//    if (replyIn > )
+//    'respond-today' : 'respond-later';
+
+    return (<Icon className={
+        cx({
+          'ConversationContainer-IconTitle': true
+        })
+      }
+      name={replyInIcon}
+    />);
   }
 
   renderMessages() {
     const { messages } = this.props.conversation;
 
     return messages.map((item, key) => (
-      <ConversationMessage message={item} key={`message-${key}`} />
+      <ConversationMessage message={item} key={`message-${key}`} onClick={this.onMessageClick} />
     ));
   }
 
   render() {
-    const { id, lastUpdated, title } = this.props.conversation;
+    const { id, lastMessageDate, subject } = this.props.conversation;
 
     return (
       <Overlay className="ConversationContainer" isOpen={id ? true : false }>
@@ -65,13 +81,13 @@ class ConversationContainer extends Component {
           </a>
           <p className="ConversationContainer-ConversationDetails">Conversation Details</p>
           <p className="ConversationContainer-LastMessage">
-            Last message: <strong>{moment(lastUpdated).startOf('day').fromNow()}</strong>
+            Last message: <strong>{moment(lastMessageDate).startOf('day').fromNow()}</strong>
           </p>
         </div>
 
         <h2 className="ConversationContainer-Title">
           {this.renderTitleIcon()}
-          {title}
+          {subject}
         </h2>
 
         <div className="ConversationContainer-Messages">
