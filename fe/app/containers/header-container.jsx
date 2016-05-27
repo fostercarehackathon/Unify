@@ -17,7 +17,7 @@ class HeaderContainer extends Component {
   constructor(props) {
     super(props);
     this.state= {
-      status:''
+      status: null
     }
   }
   render() {
@@ -36,7 +36,7 @@ class HeaderContainer extends Component {
     },()=> {
       setTimeout(()=> {
         this.setState({
-          status: ''
+          status: null
         })
       },500)
     })
@@ -48,7 +48,7 @@ class HeaderContainer extends Component {
     },()=> {
       setTimeout(()=> {
         this.setState({
-          status: ''
+          status: null
         })
       },500)
     })
