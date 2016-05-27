@@ -52,12 +52,13 @@ namespace EmpoweringYouth.Controllers
             using (var ctx = new EmpoweringYouthContext())
             {
                 var persistenUser = ctx.users.Find(requestUser.Id);
-                var conversations = ctx.conversations.Include("To").Include("From").Where(c => (c.To.Id == requestUser.Id || c.From.Id == requestUser.Id));
+                var conversations = ctx.conversations.Include("To").Include("From").Where(c => (c.To.Id == requestUser.Id || c.From.Id == requestUser.Id)).OrderByDescending(c => c.StartedDate);
                 
                 if (status == Status.ALL)
                 {
+                    var paginatedConversations = conversations.Skip(start).Take(end - start).ToList();
 
-                    foreach (Conversation c in conversations)
+                    foreach (Conversation c in paginatedConversations)
                     {
                         conversationsData.Add(new ConversationData
                         {
@@ -68,14 +69,32 @@ namespace EmpoweringYouth.Controllers
                             Subject = c.Subject,
                             StartedDate = c.StartedDate,
                             messages = c.Messages.OrderByDescending(m => m.Date).ToList()
-
                         });
                     }
 
                     return conversationsData;
                 }
 
-                var filteredConversations = conversations.Where(c => c.Messages.FirstOrDefault().Status == status).OrderByDescending(c => c.StartedDate).Skip(start).Take(end - start).ToList();
+
+                //conversations.Where(c => c.Messages.First().Status == status).OrderByDescending(c => c.StartedDate).Skip(start).Take(end - start).ToList();
+
+                List<Conversation> readConversations = new List<Conversation>();
+                List<Conversation> unreadConversations = new List<Conversation>();
+
+              //  List<Conversation> filteredConversations = conversations.Where(c => c.Messages.First().Status == status).ToList();
+
+                foreach (Conversation c in conversations) {
+                    foreach (Message m in c.Messages) {
+                        if (m.To.Id.Equals(requestUser.Id) && m.Status.Equals(Status.UNREAD)) {
+                            unreadConversations.Add(c);
+                            continue;
+                        }
+                    }
+
+                    readConversations.Add(c);
+                }
+
+                List<Conversation> filteredConversations = status.Equals(Status.READ) ? readConversations.Skip(start).Take(end - start).ToList() : unreadConversations.Skip(start).Take(end - start).ToList();
 
                 foreach (Conversation c in filteredConversations)
                 {
