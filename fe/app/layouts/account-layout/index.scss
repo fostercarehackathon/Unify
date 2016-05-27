@@ -1,11 +1,10 @@
 @import '~styles/settings/colors';
 
-$background: $color-mercury;
 $back-icon-color: $color-gray;
 
 .AccountLayout {
   min-height: 100vh;
-  background: $background;
+  background: $color-downy;
 
   h1 {
     a {
