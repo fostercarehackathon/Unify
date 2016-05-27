@@ -29,6 +29,8 @@ class ConversationsPage extends Component {
 
   getMessages(messageType) {
     console.log('>>>> GET MESSAGES of type @ ', messageType);
+
+    browserHistory.push(`/conversations?type=${messageType}`);
   }
 
   renderConversations(conversations) {
@@ -51,7 +53,7 @@ class ConversationsPage extends Component {
         onClick={this.onConversationClick.bind(this, conversation)}
       />
     ));
-    convers.unshift(<div className="ConversationHeader">
+    convers.unshift(<div className="ConversationHeader" key="conversation-header">
       <div className="ConversationHeader-From" >
         From
       </div>

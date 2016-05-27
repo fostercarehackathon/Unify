@@ -8,18 +8,24 @@ import ConversationsPage from 'pages/conversations-page';
 import { loadConversations } from 'actions/conversations';
 import { loadSummary } from 'actions/summary';
 
+function mapStoreToProps(store, ownProps) {
+  return {
+    conversations: store.conversations.conversations,
+    summary: store.summary
+  };
+}
+
 @asyncConnect([{
-  promise: ({ store: { dispatch }}) => {
+  promise: ({ store: { getState, dispatch }}) => {
+    const conversationsType = getState().routing.locationBeforeTransitions.query.type || 'all';
+
     return Promise.all([
-      dispatch(loadConversations()),
+      dispatch(loadConversations({ status: conversationsType })),
       dispatch(loadSummary())
     ]);
   }
 }])
-@connect((store) => ({
-  conversations: store.conversations.conversations,
-  summary: store.summary
-}), ({ loadConversations }))
+@connect(mapStoreToProps, ({ loadConversations }))
 export default class ConversationsContainer extends Component {
   static propTypes = {
     conversations: PropTypes.array.isRequired,
