@@ -22,14 +22,10 @@ class ConversationsPage extends Component {
 
   @autobind
   onConversationClick(conversation) {
-    console.log('show conversation @ ', conversation);
-
     browserHistory.push(`/conversations/${conversation.id}`);
   }
 
   getMessages(messageType) {
-    console.log('>>>> GET MESSAGES of type @ ', messageType);
-
     browserHistory.push(`/conversations?type=${messageType}`);
   }
 
