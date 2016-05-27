@@ -8,6 +8,7 @@ import { requestAccount as requestAccountValidation } from './validations';
 import InputField from 'components/inputfield';
 import { Grid, GridCell } from 'components/grid';
 import Select from 'react-select';
+import Button from 'components/button';
 
 import './register-page.scss';
 const fields = ['firstname', 'lastname', 'password', 'username', 'type'];
@@ -29,6 +30,10 @@ class RegisterPage extends Component {
     error: PropTypes.string,
     handleSubmit: PropTypes.func.isRequired
   };
+
+  componentDidMount() {
+    this.props.fields.type.onChange('0');
+  }
 
   @autobind
   onRequestAccountSubmit(data) {
@@ -63,8 +68,10 @@ class RegisterPage extends Component {
 
     console.log("THIS>PROSPDASSDAS", type.value);
     return (
-      <div className="RequestAccountPage">
-        <h1><Link to="/login"/>Request Account</h1>
+      <div className="LoginPage RequestAccountPage">
+        <div className="app-logo"></div>
+
+        <h1><Link to="/login"/>Register Account</h1>
         {error && <div className="AccountLayout-formError">{error}</div>}
         <form onSubmit={handleSubmit(this.onRequestAccountSubmit)}>
           <InputField
@@ -98,7 +105,7 @@ class RegisterPage extends Component {
           />
           <Grid align="right" className="AccountLayout-formActions">
             <GridCell fit>
-              <button type="submit">Submit</button>
+              <Button buttonType="submit">SUBMIT</Button>
             </GridCell>
           </Grid>
         </form>

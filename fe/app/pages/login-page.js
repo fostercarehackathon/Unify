@@ -48,6 +48,7 @@ class LoginPage extends Component {
     const {handleSubmit, fields: {email, password}, error} = this.props;
     return (
       <div className="LoginPage">
+        <div className="app-logo"></div>
         <div className="LoginPage-header">
           <h1>Login</h1>
           <Link to="/request-account"/>
@@ -71,9 +72,9 @@ class LoginPage extends Component {
                 to="/register"
                 className="LoginPage-register"
               >
-                Register
+                Need an account?
               </Link>
-              <Button type="submit" onClick={this.onLoginSubmit}>Submit</Button>
+              <Button onClick={this.onLoginSubmit}>SUBMIT</Button>
             </div>
           </div>
         </form>
