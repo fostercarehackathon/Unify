@@ -1,5 +1,6 @@
 // deps
 import React, { Component, PropTypes } from 'react';
+import { browserHistory } from 'react-router';
 import moment from 'moment';
 import { asyncConnect } from 'redux-async-connect';
 import { connect } from 'react-redux';
@@ -40,12 +41,21 @@ class ConversationContainer extends Component {
   };
 
   onBackClick() {
-    console.log('we go back');
+    browserHistory.push(`/conversations`);
   }
 
   @autobind
   onMessageClick(messageId) {
-    console.log('click on', messageId);
+    const { actions, conversation } = this.props;
+
+    actions.setActiveMessage(conversation.id, messageId);
+  }
+
+  @autobind
+  onSubmitMessage(conversationId, val, to) {
+    const {actions} = this.props;
+
+    actions.sendMessage(conversationId, val, to, 0);
   }
 
   renderTitleIcon() {
@@ -64,24 +74,37 @@ class ConversationContainer extends Component {
   }
 
   renderMessages() {
-    const { messages } = this.props.conversation;
+    const { id, messages } = this.props.conversation;
 
     return messages.map((item, key) => (
       <ConversationMessage
         message={item}
         key={`message-${key}`}
         onClick={this.onMessageClick}
-        sendMessage={() => {console.log('sending message');}}
+        sendMessage={this.onSubmitMessage}
+        conversationId={id}
       />
     ));
   }
 
-  render() {
-    const { id, lastMessageDate, subject } = this.props.conversation;
+  renderLastMessageDate() {
+    const { lastMessageDate } = this.props;
 
-    if (!id) {
-      return null;
+    if (!lastMessageDate) {
+      return void (0);
     }
+
+    return (
+      <p className="ConversationContainer-LastMessage">
+        Last message: <strong>{moment(lastMessageDate).startOf('day').fromNow()}</strong>
+      </p>
+    );
+  }
+
+  render() {
+    console.log(this.props.conversation);
+
+    const { id, subject } = this.props.conversation;
 
     return (
       <Overlay className="ConversationContainer" isOpen>
@@ -90,9 +113,7 @@ class ConversationContainer extends Component {
             <Icon name="chevron-left" />
           </a>
           <p className="ConversationContainer-ConversationDetails">Conversation Details</p>
-          <p className="ConversationContainer-LastMessage">
-            Last message: <strong>{moment(lastMessageDate).startOf('day').fromNow()}</strong>
-          </p>
+          {this.renderLastMessageDate()}
         </div>
 
         <h2 className="ConversationContainer-Title">
