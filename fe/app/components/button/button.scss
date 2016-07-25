@@ -1,0 +1,84 @@
+/*------------------------------------*\
+    Button component
+\*------------------------------------*/
+
+@import '~styles/settings/colors';
+
+// settings
+$button-defaults: (
+  background: $color-bittersweet,
+  color: #fff,
+
+  hoverBackground: darken($color-bittersweet, 5%)
+);
+
+$button-transparent: (
+  color: $color-tundora
+);
+
+$button-link: (
+  color: $color-bittersweet,
+  hoverColor: darken($color-bittersweet, 5%)
+);
+
+.Button {
+  position: relative;
+  display: inline-block;
+
+  padding: 16px 72px;
+
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  white-space: nowrap;
+
+  background: map-get($button-defaults, 'background');
+  color: map-get($button-defaults, 'color');
+
+  border: 0;
+  outline: none;
+
+  cursor: pointer;
+  user-select: none;
+
+  // hover
+  &:hover {
+    background: map-get($button-defaults, 'hoverBackground');
+  }
+}
+
+// transparent
+.Button--transparent {
+  background: none;
+  color: map-get($button-transparent, 'color');
+
+  &:hover {
+    background: none;
+    color: map-get($button-defaults, 'background');
+  }
+}
+
+// link (plain text, no background)
+.Button--link {
+  padding: 0;
+
+  font-size: 16px;
+
+  background: none;
+  color: map-get($button-link, 'color');
+
+  &:hover {
+    background: none;
+    color: map-get($button-link, 'hoverColor');
+
+    text-decoration: underline;
+  }
+}
+
+// submit (smaller?)
+.Button--submit {
+  padding: 8px 72px;
+
+  font-size: 16px;
+  font-weight: 400;
+}

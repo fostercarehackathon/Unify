@@ -202,4 +202,5 @@ exports.postcss = [
   require('autoprefixer')({ browsers: ['last 2 versions'] })
 ];
 
-exports.API_URL = 'http://localhost';
+exports.API_URL = 'http://kalon.azurewebsites.net';
+exports.TOKEN_HEADER = 'authorization';

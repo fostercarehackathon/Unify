@@ -1,0 +1,117 @@
+@import '~styles/settings/colors.scss';
+
+@keyframes reveal-up {
+  0%   { transform: translate(-50%, 100%); }
+  100% { transform: translate(-50%, 0%); }
+}
+
+.ConversationContainer {
+
+  overflow-y: hidden;
+
+  .OverlayContainer {
+    top: initial;
+    bottom: 0;
+    transform: translate(-50%, 100%);
+
+    height: calc(100% - 120px);
+    margin: 0;
+
+    //animation: reveal-up 400ms 1;
+    animation-delay: 100ms;
+    animation-fill-mode: backwards;
+  }
+
+  .OverlayContentChildren {
+    height: 100%;
+
+    background: $color-white;
+  }
+}
+
+.ConversationContainer-Header {
+  padding: 40px;
+
+  color: rgba($color-emperor, 0.5);
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.ConversationContainer-Icon {
+  position: absolute;
+  top: 42px;
+  left: 40px;
+  z-index: 2;
+
+  display: block;
+
+  cursor: pointer;
+
+  svg {
+    fill: $color-fountain-blue;
+  }
+}
+
+.ConversationContainer-ConversationDetails {
+  position: relative;
+
+  display: inline-block;
+
+  margin: 0 0 0 50px;
+  padding: 0 0 0 20px;
+
+  &:before {
+    content: "|";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+
+    font-size: 20px;
+  }
+}
+
+.ConversationContainer-LastMessage {
+  display: inline-block;
+
+  float: right;
+
+  margin: 0;
+  padding: 0;
+
+  strong {
+    padding-left: 20px;
+
+    color: $color-emperor;
+    font-weight: 700;
+  }
+}
+
+.ConversationContainer-IconTitle {
+  position: relative;
+  top: 4px;
+
+  display: inline-block;
+
+  width: 26px;
+  height: 26px;
+  margin-right: 25px;
+}
+
+.ConversationContainer-Title {
+  display: inline-block;
+
+  padding: 0 40px;
+  margin-bottom: 50px;
+
+  color: $color-emperor;
+  font-size: 24px;
+}
+
+.ConversationContainer-Messages {
+  height: 60%;
+  padding: 0 40px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}

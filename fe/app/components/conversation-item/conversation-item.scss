@@ -1,0 +1,84 @@
+/*------------------------------------*\
+    ConversationItem component
+\*------------------------------------*/
+
+@import '~styles/settings/colors';
+@import '~styles/tools/mixins';
+
+.ConversationItem {
+  width: 100%;
+  height: 60px;
+
+  max-width: 1260px;
+
+  margin-bottom: 1px;
+
+  background: #fff;
+  border-left: 2px solid $color-mercury;
+  border-bottom: 1px solid #ebebeb;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 55px;
+  color: #555;
+
+  // modifiers
+  &--respond-today {
+    border-left-color: $color-bittersweet;
+
+    .ConversationItem-Sender {
+      font-weight: 600;
+    }
+  }
+
+  &--respond-later {
+    border-left-color: $color-mustard;
+
+    .ConversationItem-Sender {
+      font-weight: 600;
+    }
+  }
+}
+
+.ConversationItem-StatusIcon {
+  position: relative;
+
+  max-width: 65px;
+  margin-right: 25px;
+
+  .Icon {
+    @include translateCenter;
+
+    width: 26px;
+    height: 26px;
+
+    &--checkmark {
+      fill: $color-fountain-blue;
+    }
+  }
+}
+
+.ConversationItem-Sender {
+  max-width: 130px;
+  margin-right: 40px;
+
+  font-weight: 300;
+}
+
+.ConversationItem-ReplyIn {
+  max-width: 90px;
+  margin-right: 40px;
+}
+
+.ConversationItem-Subject {
+  flex-grow: 1; // take all available space
+  max-width: 740px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ConversationItem-Date {
+  color: #a3a3a3;
+}

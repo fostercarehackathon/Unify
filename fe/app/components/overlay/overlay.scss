@@ -1,0 +1,46 @@
+$OverlayContainerMaxWidth: 1000px;
+
+$overlayBackground: rgba(0, 0, 0, 0.25);
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $overlayBackground;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.OverlayContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+  max-width: $OverlayContainerMaxWidth;
+
+  margin: 20px auto;
+
+  border: none;
+  outline: none;
+
+  &--outOfBound {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: none;
+  }
+}
+
+.OverlayContentChildren {
+  position: relative;
+
+  border-radius: 0;
+  box-shadow: 12px 55px 32px rgba(0, 0, 0, 0.08);
+}

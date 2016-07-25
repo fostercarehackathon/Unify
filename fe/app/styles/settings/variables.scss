@@ -1,0 +1,25 @@
+$font-size-xsm: 13px;
+$font-size-sm: 15px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+$font-size-xlg: 21px;
+$font-size-xxlg: 34px;
+
+$font-size-h1: 34px;
+$font-size-h2: 30px;
+$font-size-h3: 27px;
+$font-size-h4: 24px;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+// SPACING
+$spacer: 10px;
+$spacers: (
+        0: 0,
+        1: $spacer,
+        2: $spacer * 2,
+        3: $spacer * 3,
+        4: $spacer * 4
+);

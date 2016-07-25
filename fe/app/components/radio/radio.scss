@@ -1,0 +1,82 @@
+/*------------------------------------*\
+    Radio component
+\*------------------------------------*/
+$radio-bg-color: #ffffff;
+$radio-border-color: #939393;
+$required-color: #f15a5a;
+$radio-height: 17px;
+
+$radio-disabled-bg-color: #e5e5e5;
+$radio-disabled-border-color: #c7c7c7;
+$radio-color: #a6b5b9;
+
+.Radio {
+  position: relative;
+
+  display: inline-block;
+  height: $radio-height;
+
+  font-size: 12px;
+  color: $radio-color;
+
+  cursor: pointer;
+}
+
+.Radio-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  display: inline-block;
+
+  opacity: 0;
+}
+
+.Radio-text {
+  display: inline-block;
+
+  vertical-align: middle;
+}
+
+.Radio-simulator {
+  position: relative;
+  display: inline-block;
+  margin-right: 15px;
+
+  height: $radio-height;
+  width: $radio-height;
+
+  vertical-align: middle;
+
+  background: $radio-bg-color;
+  border: 1px solid $radio-border-color;
+  border-radius: $radio-height/2;
+
+  user-select: none;
+}
+
+input:checked ~ .Radio-simulator {
+  background: #FF7C5F;
+  border-color: darken(#FF7C5F, 5);
+
+  &:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    margin: auto;
+
+    width: 5px;
+    height: 5px;
+
+    background: #fff;
+    border-bottom: 2px solid #fff;
+    border-left: 2px solid #fff;
+
+    content: '';
+
+    border-radius: 2.5px;
+  }
+}

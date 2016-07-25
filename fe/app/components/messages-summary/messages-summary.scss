@@ -1,0 +1,55 @@
+/*------------------------------------*\
+    MessagesSummary component
+\*------------------------------------*/
+
+@import '~styles/settings/colors';
+
+.MessagesSummary {
+  font-size: 14px;
+  color: $color-hit-gray;
+  text-transform: uppercase;
+
+  ul {
+    list-style-type: none;
+
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.MessagesSummary-TotalMessages {
+  margin-bottom: 40px;
+}
+
+.MessagesSummary-Counter {
+  margin-left: 15px;
+  color: $color-silver;
+}
+
+
+.MessagesSummary-Item {
+  height: 30px;
+
+  padding-left: 30px;
+  margin-bottom: 20px;
+
+  color: $color-hit-gray;
+
+  border-left: 2px solid transparent;
+
+  // HOVER state
+  &:hover:not(.MessagesSummary-Item--active) {
+    cursor: pointer;
+    border-color: $color-hit-gray;
+  }
+
+  // ACTIVE state
+  &--active {
+    color: $color-fountain-blue;
+    border-color: $color-fountain-blue;
+
+    .MessagesSummary-Counter {
+      color: $color-fountain-blue;
+    }
+  }
+}

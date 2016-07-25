@@ -1,0 +1,62 @@
+@import '~styles/settings/colors';
+
+$back-icon-color: $color-gray;
+
+.AccountLayout {
+  min-height: 100vh;
+  background: $color-downy;
+
+  h1 {
+    a {
+      margin: 0 0 0 -55px;
+      float: left;
+
+      .Icon {
+        width: 30px;
+        height: 30px;
+        fill: $back-icon-color;
+      }
+    }
+  }
+}
+
+.AccountLayout-main {
+  position: relative;
+}
+
+.AccountLayout-logo {
+  display: block;
+
+  width: 100%;
+  margin: 40px 0;
+  text-align: center;
+
+  img {
+    display: inline-block;
+    max-width: 170px;
+  }
+}
+
+
+.AccountLayout-formActions {
+  margin-top: 40px;
+}
+
+.AccountLayout-formSubtitle {
+  margin: 10px 0 0;
+  display: block;
+}
+
+.AccountLayout-formError {
+  margin: 20px 0 10px;
+  color: $color-deep-blush;
+}
+
+.AccountLayout-labelledBox {
+  small {
+    margin: 0 0 10px;
+  }
+  div {
+    font-size: 18px;
+  }
+}

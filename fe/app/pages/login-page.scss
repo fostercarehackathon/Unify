@@ -1,0 +1,42 @@
+@import '~styles/settings/colors';
+
+.LoginPage {
+  position: relative;
+
+  background: white;
+
+  padding: 50px 60px;
+  margin-top: 200px;
+
+  &-header {
+    h1 {
+      margin: 60px 0 50px;
+      line-height: 1;
+    }
+  }
+
+  // app logo
+  .app-logo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateY(-55%) translateX(-50%);
+
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.LoginPage-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.LoginPage-forgotPassword, .LoginPage-register {
+  color: $color-bali-hai;
+
+  &:hover {
+    color: $color-bali-hai;
+  }
+}

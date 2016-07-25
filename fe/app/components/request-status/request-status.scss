@@ -1,0 +1,40 @@
+/*------------------------------------*\
+    RequestStatus component
+\*------------------------------------*/
+
+@import '~styles/settings/colors';
+
+.RequestStatus {
+  display: block;
+  height: 30px;
+
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  // SUCCESS status
+  &--success {
+    background: $color-jungle-green;
+  }
+
+  // ERROR status
+  &--error {
+    background: $color-deep-blush;
+  }
+}
+
+.RequestStatus {
+  span,
+  .Icon {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .Icon {
+    margin-right: 15px;
+    fill: #fff;
+  }
+}

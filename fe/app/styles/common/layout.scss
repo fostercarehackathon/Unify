@@ -1,0 +1,36 @@
+//
+//  App common layout
+//
+body {
+  position: relative;
+
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 400;
+
+  background: $color-wild-sand;
+}
+
+// app logo
+.app-logo {
+  display: inline-block;
+  width: 450px;
+  height: 450px;
+
+  background: url('~images/unify_logo.png') no-repeat center center;
+  background-size: contain;
+}
+
+// app common wrapper
+.app-wrapper {
+  width: 100%;
+  max-width: 1520px;
+
+  margin: 0px auto;
+}
+
+// responsive image helper
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
